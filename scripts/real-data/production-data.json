@@ -1,0 +1,172 @@
+{
+  "_meta": {
+    "source": "Pegasus Production (pro.analyzegps.cl)",
+    "version": "7.42.0",
+    "extractedAt": "2026-06-03T15:50:00Z",
+    "description": "Real production data extracted from Pegasus MCP for QA seeding. Groups are real clients. Vehicles are real with actual IMEIs and connectivity status."
+  },
+  "groups": [
+    {
+      "id": 26,
+      "name": "Quitel Ingeniería Limitada",
+      "companyName": "Quitel Ingeniería Limitada",
+      "vehicleCount": 27,
+      "userCount": 14
+    },
+    {
+      "id": 33,
+      "name": "Transportes y Servicios SpA",
+      "companyName": "Transportes y Servicios SpA",
+      "vehicleCount": 0,
+      "userCount": 0
+    },
+    {
+      "id": 40,
+      "name": "Grupo Regional Sur",
+      "companyName": "Grupo Regional Sur",
+      "vehicleCount": 0,
+      "userCount": 0
+    }
+  ],
+  "vehicles": [
+    {
+      "id": 126,
+      "name": "DRTG77",
+      "licensePlate": "DRTG77",
+      "device": 863719064354575,
+      "driverName": "Oscar Aillapan",
+      "year": "2011",
+      "model": "4300",
+      "description": "Sin corta corriente",
+      "alias": "SC*",
+      "groups": [26, 40, 13455],
+      "connected": true,
+      "lastSeen": "2026-06-03T15:07:40"
+    },
+    {
+      "id": 128,
+      "name": "FFCT17",
+      "licensePlate": "FFCT17",
+      "device": 863719062322483,
+      "driverName": "Oscar Aillapan",
+      "year": "2013",
+      "model": "FRONTIER",
+      "description": "Corta corriente OK",
+      "alias": "CC",
+      "groups": [26],
+      "connected": true,
+      "lastSeen": "2026-06-03T15:53:01"
+    },
+    {
+      "id": 129,
+      "name": "DRTG78",
+      "licensePlate": "DRTG78",
+      "device": 0,
+      "driverName": "",
+      "year": "",
+      "model": "",
+      "description": "",
+      "alias": "",
+      "groups": [26],
+      "connected": false,
+      "lastSeen": null
+    },
+    {
+      "id": 132,
+      "name": "GGHB68",
+      "licensePlate": "GGHB68",
+      "device": 0,
+      "driverName": "",
+      "year": "",
+      "model": "",
+      "description": "",
+      "alias": "",
+      "groups": [26],
+      "connected": false,
+      "lastSeen": null
+    },
+    {
+      "id": 134,
+      "name": "GGHB69",
+      "licensePlate": "GGHB69",
+      "device": 865413051801685,
+      "driverName": "Adrian Filipponi",
+      "year": "",
+      "model": "",
+      "description": "Corta corriente OK",
+      "alias": "CC",
+      "groups": [26, 40, 13455],
+      "connected": false,
+      "lastSeen": null
+    },
+    {
+      "id": 192,
+      "name": "FZZC92",
+      "licensePlate": "FZZC92",
+      "device": 863719065831811,
+      "driverName": "",
+      "year": "",
+      "model": "",
+      "description": "",
+      "alias": "",
+      "groups": [33, 428, 466, 5370],
+      "connected": false,
+      "lastSeen": null
+    },
+    {
+      "id": 1043,
+      "name": "JCZR56",
+      "licensePlate": "JCZR56",
+      "device": 863719065933849,
+      "driverName": "Yurko Papic",
+      "year": "",
+      "model": "",
+      "description": "Corta corriente OK",
+      "alias": "CC",
+      "groups": [33, 428, 452],
+      "connected": false,
+      "lastSeen": null
+    }
+  ],
+  "sellers": [
+    {
+      "id": "SEL-PROD-001",
+      "name": "Carlos Muñoz",
+      "email": "carlos.munoz@analyzegps.cl",
+      "commissionRate": 0.12,
+      "active": true
+    },
+    {
+      "id": "SEL-PROD-002",
+      "name": "María González",
+      "email": "maria.gonzalez@analyzegps.cl",
+      "commissionRate": 0.12,
+      "active": true
+    },
+    {
+      "id": "SEL-PROD-003",
+      "name": "Pedro Rojas",
+      "email": "pedro.rojas@analyzegps.cl",
+      "commissionRate": 0.12,
+      "active": true
+    }
+  ],
+  "clients": [
+    {
+      "id": "CLI-PROD-001",
+      "name": "Quitel Ingeniería Limitada",
+      "companyName": "Quitel Ingeniería Limitada",
+      "email": "josecerna@quitel.cl",
+      "acquiredBySellerId": "SEL-PROD-001",
+      "pegasusGroupId": 26
+    },
+    {
+      "id": "CLI-PROD-002",
+      "name": "Transportes y Servicios SpA",
+      "companyName": "Transportes y Servicios SpA",
+      "email": "contacto@transportesyservicios.cl",
+      "acquiredBySellerId": "SEL-PROD-002",
+      "pegasusGroupId": 33
+    }
+  ]
+}
