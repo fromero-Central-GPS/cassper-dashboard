@@ -74,4 +74,76 @@ export const mockDashboardData: DashboardData = {
     { id: 'CAMP-003', name: 'Soser — Re-engagement Sept 2026', status: 'scheduled', messagesSent: 0, responseRate: 0, conversions: 0, valueRecovered: 0 },
     { id: 'CAMP-004', name: 'Reactivación Clientes Fríos (15 May)', status: 'active', messagesSent: 15, responseRate: 0, conversions: 0, valueRecovered: 0 },
   ],
+  // Live Opp — oportunidades abiertas con riesgo detectado
+  liveRisks: [
+    {
+      contactName: 'Constructora Errázuriz',
+      value: 3500000,
+      riskScore: 82,
+      warnings: ['Sin respuesta en 14 días', 'Competidor activo (Wialon)', 'Último mensaje inbound fue consulta de precio'],
+      recommendedAction: 'Enviar seguimiento personalizado destacando soporte local y plataforma sin límites. Llamar si no hay respuesta en 48h.',
+    },
+    {
+      contactName: 'McDonald Vargas',
+      value: 2800000,
+      riskScore: 75,
+      warnings: ['11 días sin contacto', 'Cotización enviada pero sin feedback', 'Etapa: Demo/Plataforma'],
+      recommendedAction: 'Agendar demo personalizada antes del viernes. Enfatizar ROI y casos de éxito en flotas similares.',
+    },
+    {
+      contactName: 'Transportes Sanz',
+      value: 4800000,
+      riskScore: 68,
+      warnings: ['7 días desde último mensaje', 'Respuesta lenta del vendedor asignado (promedio 8h vs umbral Won Track 2.3h)'],
+      recommendedAction: 'Reasignar a vendedor con mejor tiempo de respuesta. Ofrecer descuento por cierre rápido (15% hasta fin de mes).',
+    },
+    {
+      contactName: 'Distribuidora del Sur',
+      value: 1200000,
+      riskScore: 55,
+      warnings: ['5 días sin seguimiento post-cotización', 'Cliente preguntó por instalación y no recibió respuesta'],
+      recommendedAction: 'Responder consulta de instalación pendiente. Enviar video del proceso de instalación.',
+    },
+    {
+      contactName: 'Gasco Centro',
+      value: 950000,
+      riskScore: 42,
+      warnings: ['Bajo engagement (solo 2 mensajes en 30 días)', 'Sin respuesta a la demo enviada'],
+      recommendedAction: 'Enviar caso de éxito de cliente del mismo rubro. Preguntar si necesitan demo presencial.',
+    },
+    {
+      contactName: 'Inmobiliaria Norte Verde',
+      value: 6200000,
+      riskScore: 35,
+      warnings: ['Respuesta reciente (ayer)', 'Etapa: Negociación', 'Señal de compra detectada'],
+      recommendedAction: 'Cerrar con propuesta formal en 48h. Cliente mostró alta intención — riesgo bajo pero alto valor.',
+    },
+  ],
+  // Won Track — patrones extraídos de oportunidades ganadas
+  wonPatterns: [
+    {
+      dealType: 'Flota 10-50 vehículos',
+      avgTimeToCloseDays: 14,
+      keySuccessFactors: ['Demo personalizada en primera semana', 'Respuesta < 2h en horario hábil', 'Cotización con 3 opciones de plan'],
+      commonBuyingSignals: ['Pregunta por integración API', 'Solicita demo para equipo técnico', 'Menciona fecha de inicio del proyecto'],
+    },
+    {
+      dealType: 'Flota 5-10 vehículos',
+      avgTimeToCloseDays: 21,
+      keySuccessFactors: ['Seguimiento semanal consistente', 'Ofrecer prueba gratuita 7 días', 'Contacto directo con dueño/gerente'],
+      commonBuyingSignals: ['Pide referencias de clientes similares', 'Negocia precio pero acepta contraoferta', 'Consulta por soporte post-venta'],
+    },
+    {
+      dealType: 'Vehículo individual / PYME',
+      avgTimeToCloseDays: 35,
+      keySuccessFactors: ['WhatsApp como canal principal', 'Respuesta en < 30 min', 'Plan de pago flexible (cuotas)'],
+      commonBuyingSignals: ['Pregunta "¿cuándo pueden instalar?"', 'Comparte datos del vehículo', 'Solicita factura o boleta'],
+    },
+    {
+      dealType: 'Gran cuenta (+50 vehículos)',
+      avgTimeToCloseDays: 45,
+      keySuccessFactors: ['Múltiples reuniones con stakeholders', 'Propuesta técnica detallada', 'Piloto de 30 días con 5 vehículos'],
+      commonBuyingSignals: ['Solicita SLA y contrato formal', 'Pide reunión con equipo de soporte', 'Menciona presupuesto aprobado'],
+    },
+  ],
 };
