@@ -96,6 +96,7 @@ export async function GET(request: Request) {
           score: val > 4000000 ? 98 : val > 1000000 ? 80 : 60,
           lastContact: o.updatedAt?.slice(0, 10) || o.createdAt?.slice(0, 10) || '2026-01-01',
           email: o.email,
+          description: o.name || null,
           draftSubject: name ? `Seguimiento GPS — ${name}` : 'Seguimiento GPS — CentralGPS',
           draftMessage: name ? `Hola ${name.split(' ')[0]},\n\nHace un tiempo conversamos sobre GPS para tu empresa. Quería saber si todavía están evaluando opciones o si ya encontraron una solución.\n\nTenemos disponibilidad inmediata y podemos armar una propuesta ajustada a lo que necesites.\n\n¿Te interesa retomar la conversación?\n\nSaludos,\nFrancisco` : '',
           draftStatus: 'draft' as const,

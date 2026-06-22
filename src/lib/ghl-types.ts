@@ -90,6 +90,7 @@ export interface RecoverableTicket {
   lastContact: string;
   email?: string;
   phone?: string;
+  description?: string;
   draftSubject?: string;
   draftMessage?: string;
   draftStatus?: 'draft' | 'approved' | 'sent' | 'failed' | 'awaiting_response' | 'replied_positive' | 'replied_negative' | 'replied_neutral' | 'no_response' | 'followup_sent' | 'archived';

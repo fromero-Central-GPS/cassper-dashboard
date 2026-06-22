@@ -176,7 +176,11 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
                       <span className="text-slate-200 text-xs font-medium truncate">{ticket.contactName}</span>
                       <ChannelIcon className={`w-3 h-3 ${channelColors[ticket.channel]} shrink-0`} />
                     </div>
-                    <p className="text-slate-500 text-[10px]">{ticket.stage} · {ticket.lastContact} · {ticket.lossReason}</p>
+                    <p className="text-slate-500 text-[10px]">
+                      {ticket.description && <span className="text-slate-400">{ticket.description}</span>}
+                      {ticket.description && <br />}
+                      {ticket.stage} · {ticket.lastContact} · {ticket.lossReason}
+                    </p>
                   </div>
 
                   <div className="flex items-center gap-2 shrink-0">
