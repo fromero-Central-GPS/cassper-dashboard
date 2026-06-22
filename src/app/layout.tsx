@@ -7,6 +7,8 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Revenue Recovery Dashboard — GHL + Paperclip",
   description: "Dashboard de detección de oportunidades perdidas via GHL MCP + Paperclip Agent. Inspirado en Cassper.",
