@@ -210,6 +210,55 @@ CREATE INDEX IF NOT EXISTS idx_gps_devices_contract ON gps_devices(contract_id);
 CREATE INDEX IF NOT EXISTS idx_contract_devices_contract ON contract_devices(contract_id);\nCREATE INDEX IF NOT EXISTS idx_commission_alerts_type ON commission_alerts(type);\nCREATE INDEX IF NOT EXISTS idx_commission_alerts_severity ON commission_alerts(severity);\nCREATE INDEX IF NOT EXISTS idx_commission_alerts_seller ON commission_alerts(seller_id);\nCREATE INDEX IF NOT EXISTS idx_commission_alerts_is_read ON commission_alerts(is_read);
 CREATE INDEX IF NOT EXISTS idx_pipeline_runs_run_at ON pipeline_runs(run_at DESC);
 CREATE INDEX IF NOT EXISTS idx_pipeline_runs_pipeline ON pipeline_runs(pipeline_id);
+
+-- Recovery Campaigns (campañas de recuperación post-envío)
+CREATE TABLE IF NOT EXISTS recovery_campaigns (
+  id                  TEXT PRIMARY KEY,
+  name                TEXT NOT NULL,
+  wave_number         INTEGER NOT NULL DEFAULT 1,
+  status              TEXT NOT NULL DEFAULT 'active'
+                      CHECK (status IN ('active','completed','archived','draft')),
+  messages_sent       INTEGER NOT NULL DEFAULT 0,
+  total_value_targeted REAL NOT NULL DEFAULT 0,
+  started_at          TEXT NOT NULL DEFAULT (datetime('now')),
+  completed_at        TEXT,
+  created_at          TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- Recovery Sends (envíos individuales dentro de una campaña)
+CREATE TABLE IF NOT EXISTS recovery_sends (
+  id                      TEXT PRIMARY KEY,
+  campaign_id             TEXT NOT NULL REFERENCES recovery_campaigns(id),
+  contact_name            TEXT NOT NULL,
+  contact_email           TEXT,
+  company_name            TEXT,
+  ghl_contact_id          TEXT,
+  opportunity_id          TEXT,
+  value_clp               REAL NOT NULL DEFAULT 0,
+  channel                 TEXT NOT NULL DEFAULT 'email'
+                          CHECK (channel IN ('email','whatsapp','sms')),
+  message_id              TEXT,
+  status                  TEXT NOT NULL DEFAULT 'sent'
+                          CHECK (status IN (
+                            'sent','awaiting_response','replied_positive',
+                            'replied_negative','replied_neutral','no_response',
+                            'followup_sent','archived','failed'
+                          )),
+  sent_at                 TEXT NOT NULL DEFAULT (datetime('now')),
+  response_at             TEXT,
+  response_classification TEXT CHECK (response_classification IN ('positive','negative','neutral')),
+  response_summary        TEXT,
+  followup_sent_at        TEXT,
+  followup_message_id     TEXT,
+  archived_at             TEXT,
+  notes                   TEXT,
+  created_at              TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_recovery_sends_campaign ON recovery_sends(campaign_id);
+CREATE INDEX IF NOT EXISTS idx_recovery_sends_status ON recovery_sends(status);
+CREATE INDEX IF NOT EXISTS idx_recovery_sends_sent_at ON recovery_sends(sent_at);
+CREATE INDEX IF NOT EXISTS idx_recovery_campaigns_status ON recovery_campaigns(status);
 `;
 
 export function initSchema(db?: Database.Database): void {

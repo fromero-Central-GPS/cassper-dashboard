@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { RecoverableTicket, CampaignMetric } from '@/lib/ghl-types';
 import { Phone, Mail, MessageCircle, Camera, Hash, AlertTriangle, Zap, ArrowUp, MessageSquare, Send, CheckCircle, Clock, ChevronDown, ChevronRight, ThumbsUp, XCircle, Loader2, TrendingUp, Ban, Eye } from 'lucide-react';
 
@@ -44,6 +44,8 @@ const campaignStatusConfig = {
   active: { label: 'Activa', color: 'text-green-400', bg: 'bg-green-500/10', icon: Send },
   scheduled: { label: 'Programada', color: 'text-blue-400', bg: 'bg-blue-500/10', icon: Clock },
   completed: { label: 'Finalizada', color: 'text-slate-400', bg: 'bg-slate-500/10', icon: CheckCircle },
+  draft: { label: 'Borrador', color: 'text-yellow-400', bg: 'bg-yellow-500/10', icon: Clock },
+  archived: { label: 'Archivada', color: 'text-slate-500', bg: 'bg-slate-600/10', icon: Ban },
 };
 
 const draftStatusConfig: Record<string, { label: string; color: string; bg: string; icon: React.ComponentType<{ className?: string }> }> = {
@@ -51,16 +53,37 @@ const draftStatusConfig: Record<string, { label: string; color: string; bg: stri
   approved: { label: 'Aprobado', color: 'text-blue-400', bg: 'bg-blue-500/10', icon: ThumbsUp },
   sent: { label: 'Enviado', color: 'text-indigo-400', bg: 'bg-indigo-500/10', icon: Send },
   awaiting_response: { label: 'Esperando respuesta', color: 'text-blue-400', bg: 'bg-blue-500/10', icon: Eye },
-  replied: { label: 'Respondió', color: 'text-amber-400', bg: 'bg-amber-500/10', icon: TrendingUp },
-  recovered: { label: 'Recuperado', color: 'text-green-400', bg: 'bg-green-500/10', icon: CheckCircle },
+  replied_positive: { label: 'Respondió ✅', color: 'text-green-400', bg: 'bg-green-500/10', icon: CheckCircle },
+  replied_negative: { label: 'Respondió ❌', color: 'text-red-400', bg: 'bg-red-500/10', icon: XCircle },
+  replied_neutral: { label: 'Respondió ~', color: 'text-amber-400', bg: 'bg-amber-500/10', icon: TrendingUp },
+  followed_up: { label: 'Follow-up enviado', color: 'text-purple-400', bg: 'bg-purple-500/10', icon: Send },
   no_response: { label: 'Sin respuesta', color: 'text-slate-400', bg: 'bg-slate-500/10', icon: Ban },
+  archived: { label: 'Archivado', color: 'text-slate-500', bg: 'bg-slate-600/10', icon: Ban },
   failed: { label: 'Fallido', color: 'text-red-400', bg: 'bg-red-500/10', icon: XCircle },
 };
+
+const LS_KEY = 'cassper-ticket-status';
+
+function loadStatusFromStorage(tickets: RecoverableTicket[]): Record<string, string> {
+  try {
+    const stored = localStorage.getItem(LS_KEY);
+    if (stored) return JSON.parse(stored);
+  } catch {}
+  // Initialize from draftStatus in mock data
+  const initial: Record<string, string> = {};
+  tickets.forEach(t => { if (t.draftStatus) initial[t.id] = t.draftStatus; });
+  return initial;
+}
 
 export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [approving, setApproving] = useState<Set<string>>(new Set());
-  const [ticketStatus, setTicketStatus] = useState<Record<string, string>>({});
+  const [ticketStatus, setTicketStatus] = useState<Record<string, string>>(() => loadStatusFromStorage(tickets));
+
+  // Persist to localStorage on every status change
+  useEffect(() => {
+    try { localStorage.setItem(LS_KEY, JSON.stringify(ticketStatus)); } catch {}
+  }, [ticketStatus]);
 
   const toggleExpand = (id: string) => {
     const next = new Set(expanded);
@@ -254,7 +277,7 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
         </p>
         <div className="space-y-3">
           {campaigns.map((campaign) => {
-            const status = campaignStatusConfig[campaign.status];
+            const status = campaignStatusConfig[campaign.status] || campaignStatusConfig.active;
             const StatusIcon = status.icon;
             return (
               <div
@@ -262,13 +285,18 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
                 className="bg-slate-700/30 rounded-lg p-3 hover:bg-slate-700/50 transition-colors"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-slate-200 text-xs font-medium">{campaign.name}</span>
+                  <div>
+                    <span className="text-slate-200 text-xs font-medium">{campaign.name}</span>
+                    {campaign.waveNumber && (
+                      <span className="text-slate-500 text-[10px] ml-1">Wave {campaign.waveNumber}</span>
+                    )}
+                  </div>
                   <span className={`inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full ${status.bg} ${status.color}`}>
                     <StatusIcon className="w-2.5 h-2.5" />
                     {status.label}
                   </span>
                 </div>
-                <div className="grid grid-cols-2 gap-2 text-[10px]">
+                <div className="grid grid-cols-3 gap-2 text-[10px]">
                   <div>
                     <span className="text-slate-500">Enviados</span>
                     <p className="text-slate-300">{campaign.messagesSent.toLocaleString()}</p>
@@ -285,7 +313,43 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
                     <span className="text-slate-500">Recuperado</span>
                     <p className="text-amber-400">{formatValue(campaign.valueRecovered)}</p>
                   </div>
+                  <div>
+                    <span className="text-slate-500">Valor Total</span>
+                    <p className="text-slate-400">{formatValue(campaign.totalValue || 0)}</p>
+                  </div>
+                  <div>
+                    <span className="text-slate-500">Pendientes</span>
+                    <p className="text-blue-400">{campaign.awaitingCount ?? '—'}</p>
+                  </div>
                 </div>
+                {/* Response breakdown bar */}
+                {(campaign.positiveCount !== undefined || campaign.negativeCount !== undefined) && (
+                  <div className="mt-2 flex gap-1 items-center">
+                    <div className="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden flex">
+                      {campaign.positiveCount ? (
+                        <div
+                          className="h-full bg-green-500 transition-all"
+                          style={{ width: `${Math.round((campaign.positiveCount / campaign.messagesSent) * 100)}%` }}
+                        />
+                      ) : null}
+                      {campaign.negativeCount ? (
+                        <div
+                          className="h-full bg-red-500 transition-all"
+                          style={{ width: `${Math.round((campaign.negativeCount / campaign.messagesSent) * 100)}%` }}
+                        />
+                      ) : null}
+                      {campaign.noResponseCount ? (
+                        <div
+                          className="h-full bg-slate-600 transition-all"
+                          style={{ width: `${Math.round((campaign.noResponseCount / campaign.messagesSent) * 100)}%` }}
+                        />
+                      ) : null}
+                    </div>
+                    <span className="text-[9px] text-slate-500 shrink-0">
+                      {campaign.positiveCount || 0}✅ {campaign.negativeCount || 0}❌ {campaign.noResponseCount || 0}💤
+                    </span>
+                  </div>
+                )}
               </div>
             );
           })}

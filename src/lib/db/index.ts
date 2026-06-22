@@ -19,3 +19,5 @@ export { AlertRepository } from './alert-repository';
 export type { AlertCountBySeverity, AlertCountByType, AlertCountByClient } from './alert-repository';
 export { PipelineRunRepository } from './repositories/pipeline-runs';
 export type { PipelineRun, PipelineRunSummary } from './repositories/pipeline-runs';
+export { RecoveryRepository } from './repositories/recovery';
+export type { RecoveryCampaign, RecoverySend, RecoveryCampaignMetrics, RecoverySendStatus } from './repositories/recovery';

@@ -92,17 +92,25 @@ export interface RecoverableTicket {
   phone?: string;
   draftSubject?: string;
   draftMessage?: string;
-  draftStatus?: 'draft' | 'approved' | 'sent' | 'failed';
+  draftStatus?: 'draft' | 'approved' | 'sent' | 'failed' | 'awaiting_response' | 'replied_positive' | 'replied_negative' | 'replied_neutral' | 'no_response' | 'followup_sent' | 'archived';
 }
 
 export interface CampaignMetric {
   id: string;
   name: string;
-  status: 'active' | 'scheduled' | 'completed';
+  status: 'active' | 'scheduled' | 'completed' | 'draft' | 'archived';
+  waveNumber?: number;
   messagesSent: number;
+  totalValue?: number;
   responseRate: number;
   conversions: number;
   valueRecovered: number;
+  repliedCount?: number;
+  positiveCount?: number;
+  negativeCount?: number;
+  noResponseCount?: number;
+  awaitingCount?: number;
+  followupCount?: number;
 }
 
 export interface LossTrendMonth {

@@ -20,19 +20,30 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'overview' | 'recovery' | 'live' | 'won'>('overview');
 
+  const [recoveryCampaigns, setRecoveryCampaigns] = useState<DashboardData['campaigns'] | null>(null);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const [sRes, fRes] = await Promise.all([
+        const [sRes, fRes, rRes] = await Promise.all([
           fetch('/api/ghl/summary?mode=mock'),
           fetch('/api/ghl/forensics?mode=mock'),
+          fetch('/api/recovery/campaigns?mode=mock'),
         ]);
         const summaryJson = await sRes.json();
         setData(summaryJson);
         const forensicsJson: ForensicsApiResponse = await fRes.json();
         if (forensicsJson.batchResult) {
           setForensics(forensicsJson.batchResult as unknown as BatchAnalysisResult);
+        }
+        try {
+          const recoveryJson = await rRes.json();
+          if (recoveryJson.campaigns) {
+            setRecoveryCampaigns(recoveryJson.campaigns);
+          }
+        } catch {
+          // Recovery API not critical for overview
         }
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -171,11 +182,11 @@ export default function Home() {
           </div>
         )}
 
-        {/* Recuperación */}
+        {/* Recuperación (CEN-1008: Post-envío monitoreo) */}
         {activeTab === 'recovery' && (
           <RecoveryTickets
             tickets={data.recoverableTickets}
-            campaigns={data.campaigns}
+            campaigns={recoveryCampaigns ?? data.campaigns}
           />
         )}
       </main>
