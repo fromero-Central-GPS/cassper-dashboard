@@ -65,15 +65,15 @@ export const mockDashboardData: DashboardData = {
     { month: 'May 2026', lostValue: 4704537, lostCount: 18, topReason: 'Sin seguimiento / Abandono' },
     { month: 'Jun 2026', lostValue: 4300000, lostCount: 1, topReason: 'Perdido sin diagnóstico' },   // EPYSA $4.3M
   ],
-  // Campañas — reales ejecutadas en experimentos CEN-757, CEN-759
+  // Campañas — datos REALES de envíos ejecutados (22 Jun 2026)
   campaigns: [
     {
       id: 'recovery-wave1-20260622',
       name: 'Recuperación Wave 1 — Re-engagement',
       status: 'active',
       waveNumber: 1,
-      messagesSent: 13,
-      totalValue: 10728575,
+      messagesSent: 2,
+      totalValue: 5600571,
       responseRate: 0,
       conversions: 0,
       valueRecovered: 0,
@@ -81,7 +81,7 @@ export const mockDashboardData: DashboardData = {
       positiveCount: 0,
       negativeCount: 0,
       noResponseCount: 0,
-      awaitingCount: 13,
+      awaitingCount: 2,
       followupCount: 0,
     },
     {
