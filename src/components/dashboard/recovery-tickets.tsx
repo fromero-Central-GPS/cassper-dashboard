@@ -59,6 +59,7 @@ const draftStatusConfig: Record<string, { label: string; color: string; bg: stri
   followed_up: { label: 'Follow-up enviado', color: 'text-purple-400', bg: 'bg-purple-500/10', icon: Send },
   no_response: { label: 'Sin respuesta', color: 'text-slate-400', bg: 'bg-slate-500/10', icon: Ban },
   archived: { label: 'Archivado', color: 'text-slate-500', bg: 'bg-slate-600/10', icon: Ban },
+  rejected: { label: 'Descartado', color: 'text-slate-500', bg: 'bg-slate-600/10', icon: Ban },
   failed: { label: 'Fallido', color: 'text-red-400', bg: 'bg-red-500/10', icon: XCircle },
 };
 
@@ -79,6 +80,7 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [expandedCampaigns, setExpandedCampaigns] = useState<Set<string>>(new Set());
   const [approving, setApproving] = useState<Set<string>>(new Set());
+  const [discarding, setDiscarding] = useState<Set<string>>(new Set());
   const [ticketStatus, setTicketStatus] = useState<Record<string, string>>(() => loadStatusFromStorage(tickets));
 
   // Persist to localStorage on every status change
@@ -124,6 +126,16 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
         return next;
       });
     }
+  };
+
+  const handleDiscard = (ticket: RecoverableTicket) => {
+    setDiscarding(prev => new Set(prev).add(ticket.id));
+    setTicketStatus(prev => ({ ...prev, [ticket.id]: 'rejected' }));
+    setExpanded(prev => { const next = new Set(prev); next.delete(ticket.id); return next; });
+    // Small delay to show feedback
+    setTimeout(() => {
+      setDiscarding(prev => { const next = new Set(prev); next.delete(ticket.id); return next; });
+    }, 300);
   };
 
   return (
@@ -218,6 +230,7 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
                           : '⚠️ Requiere aprobación humana'}
                       </span>
                       {status === 'draft' && (
+                        <div className="flex gap-2">
                         <button
                           onClick={() => handleApprove(ticket)}
                           disabled={isApproving}
@@ -230,6 +243,20 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
                           )}
                           {isApproving ? 'Enviando...' : 'Aprobar envío'}
                         </button>
+                        <button
+                          onClick={() => handleDiscard(ticket)}
+                          disabled={discarding.has(ticket.id)}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-600 hover:bg-slate-500 disabled:bg-slate-600/50 text-slate-300 text-xs font-medium rounded-lg transition-colors"
+                        >
+                          <Ban className="w-3 h-3" />
+                          {discarding.has(ticket.id) ? 'Descartando...' : 'Descartar'}
+                        </button>
+                        </div>
+                      )}
+                      {status === 'rejected' && (
+                        <span className="inline-flex items-center gap-1 text-xs text-slate-500">
+                          <Ban className="w-3 h-3" /> Descartado
+                        </span>
                       )}
                       {(status === 'awaiting_response' || status === 'sent') && (
                         <div className="text-[10px] text-slate-500">
