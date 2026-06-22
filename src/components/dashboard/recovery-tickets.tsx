@@ -77,6 +77,7 @@ function loadStatusFromStorage(tickets: RecoverableTicket[]): Record<string, str
 
 export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [expandedCampaigns, setExpandedCampaigns] = useState<Set<string>>(new Set());
   const [approving, setApproving] = useState<Set<string>>(new Set());
   const [ticketStatus, setTicketStatus] = useState<Record<string, string>>(() => loadStatusFromStorage(tickets));
 
@@ -279,42 +280,57 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
           {campaigns.map((campaign) => {
             const status = campaignStatusConfig[campaign.status] || campaignStatusConfig.active;
             const StatusIcon = status.icon;
+            const isCampaignOpen = expandedCampaigns.has(campaign.id);
+            // Tickets in this campaign (those with awaiting_response/sent status)
+            const campaignTickets = tickets.filter(t => {
+              const s = ticketStatus[t.id] || t.draftStatus;
+              return s === 'awaiting_response' || s === 'sent' || s === 'replied' || s === 'recovered';
+            });
             return (
               <div
                 key={campaign.id}
-                className="bg-slate-700/30 rounded-lg p-3 hover:bg-slate-700/50 transition-colors"
+                className="bg-slate-700/30 rounded-lg overflow-hidden hover:bg-slate-700/50 transition-colors"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <div>
-                    <span className="text-slate-200 text-xs font-medium">{campaign.name}</span>
-                    {campaign.waveNumber && (
-                      <span className="text-slate-500 text-[10px] ml-1">Wave {campaign.waveNumber}</span>
-                    )}
+                <button
+                  onClick={() => {
+                    const next = new Set(expandedCampaigns);
+                    if (next.has(campaign.id)) next.delete(campaign.id); else next.add(campaign.id);
+                    setExpandedCampaigns(next);
+                  }}
+                  className="w-full text-left p-3"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-1">
+                      {isCampaignOpen ? <ChevronDown className="w-3 h-3 text-slate-500" /> : <ChevronRight className="w-3 h-3 text-slate-500" />}
+                      <span className="text-slate-200 text-xs font-medium">{campaign.name}</span>
+                      {campaign.waveNumber && (
+                        <span className="text-slate-500 text-[10px] ml-1">Wave {campaign.waveNumber}</span>
+                      )}
+                    </div>
+                    <span className={`inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full ${status.bg} ${status.color}`}>
+                      <StatusIcon className="w-2.5 h-2.5" />
+                      {status.label}
+                    </span>
                   </div>
-                  <span className={`inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full ${status.bg} ${status.color}`}>
-                    <StatusIcon className="w-2.5 h-2.5" />
-                    {status.label}
-                  </span>
-                </div>
-                <div className="grid grid-cols-3 gap-2 text-[10px]">
-                  <div>
-                    <span className="text-slate-500">Enviados</span>
-                    <p className="text-slate-300">{campaign.messagesSent.toLocaleString()}</p>
-                  </div>
-                  <div>
-                    <span className="text-slate-500">Tasa Resp.</span>
-                    <p className="text-slate-300">{campaign.responseRate}%</p>
-                  </div>
-                  <div>
-                    <span className="text-slate-500">Conversiones</span>
-                    <p className="text-green-400">{campaign.conversions}</p>
-                  </div>
-                  <div>
-                    <span className="text-slate-500">Recuperado</span>
-                    <p className="text-amber-400">{formatValue(campaign.valueRecovered)}</p>
-                  </div>
-                  <div>
-                    <span className="text-slate-500">Valor Total</span>
+                  <div className="grid grid-cols-3 gap-2 text-[10px]">
+                    <div>
+                      <span className="text-slate-500">Enviados</span>
+                      <p className="text-slate-300">{campaign.messagesSent.toLocaleString()}</p>
+                    </div>
+                    <div>
+                      <span className="text-slate-500">Tasa Resp.</span>
+                      <p className="text-slate-300">{campaign.responseRate}%</p>
+                    </div>
+                    <div>
+                      <span className="text-slate-500">Conversiones</span>
+                      <p className="text-green-400">{campaign.conversions}</p>
+                    </div>
+                    <div>
+                      <span className="text-slate-500">Recuperado</span>
+                      <p className="text-amber-400">{formatValue(campaign.valueRecovered)}</p>
+                    </div>
+                    <div>
+                      <span className="text-slate-500">Valor Total</span>
                     <p className="text-slate-400">{formatValue(campaign.totalValue || 0)}</p>
                   </div>
                   <div>
@@ -348,6 +364,34 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
                     <span className="text-[9px] text-slate-500 shrink-0">
                       {campaign.positiveCount || 0}✅ {campaign.negativeCount || 0}❌ {campaign.noResponseCount || 0}💤
                     </span>
+                  </div>
+                )}
+                </button>
+                {/* Expanded campaign detail: contact list */}
+                {isCampaignOpen && (
+                  <div className="border-t border-slate-700/30 px-3 pb-3 pt-2">
+                    {campaignTickets.length === 0 ? (
+                      <p className="text-[10px] text-slate-500 text-center py-2">Sin envíos aún</p>
+                    ) : (
+                      <div className="space-y-1">
+                        {campaignTickets.map(ct => {
+                          const s = ticketStatus[ct.id] || ct.draftStatus || 'draft';
+                          const si = draftStatusConfig[s];
+                          return (
+                            <div key={ct.id} className="flex items-center justify-between text-[10px] py-1 border-b border-slate-700/20 last:border-0">
+                              <div className="min-w-0 flex-1">
+                                <span className="text-slate-300 truncate">{ct.contactName}</span>
+                                <span className="text-slate-500 ml-1">{formatValue(ct.value)}</span>
+                              </div>
+                              <span className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9px] shrink-0 ml-2 ${si.bg} ${si.color}`}>
+                                {React.createElement(si.icon, { className: 'w-2 h-2' })}
+                                {si.label}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
