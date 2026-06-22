@@ -81,18 +81,26 @@ export async function GET(request: Request) {
         { phase: 'Demo / Instalado', count: lostOpps.filter((o: any) => o.stageId === '8f1f9bc8-5ee8-428d-a67e-927b853b6d9f').length, value: lostOpps.filter((o: any) => o.stageId === '8f1f9bc8-5ee8-428d-a67e-927b853b6d9f').reduce((s: number, o: any) => s + o.value, 0) },
         { phase: 'Perdido', count: lostOpps.filter((o: any) => o.stageId === '2bfd0ea8-b816-4e1c-88de-4d25e2b535fb').length, value: lostOpps.filter((o: any) => o.stageId === '2bfd0ea8-b816-4e1c-88de-4d25e2b535fb').reduce((s: number, o: any) => s + o.value, 0) },
       ].filter(p => p.count > 0),
-      recoverableTickets: withEmail.slice(0, 13).map((o: any, i: number) => ({
-        id: o.id,
-        contactName: o.contactName || o.name,
-        channel: 'Email' as const,
-        date: o.updatedAt?.slice(0, 10) || '2026-01-01',
-        value: o.value,
-        priority: o.value > 4000000 ? 'urgent' as const : o.value > 1000000 ? 'high' as const : o.value > 200000 ? 'medium' as const : 'low' as const,
-        lossReason: 'Sin seguimiento',
-        stage: 'Perdido',
-        score: o.value > 4000000 ? 98 : o.value > 1000000 ? 80 : 60,
-        lastContact: o.updatedAt?.slice(0, 10) || '2026-01-01',
-      })),
+      recoverableTickets: withEmail.slice(0, 13).map((o: any) => {
+        const name = o.contactName || o.name || '';
+        const val = o.value || 0;
+        return {
+          id: o.id,
+          contactName: name,
+          channel: 'Email' as const,
+          date: o.updatedAt?.slice(0, 10) || o.createdAt?.slice(0, 10) || '2026-01-01',
+          value: val,
+          priority: val > 4000000 ? 'urgent' as const : val > 1000000 ? 'high' as const : val > 200000 ? 'medium' as const : 'low' as const,
+          lossReason: 'Sin seguimiento',
+          stage: 'Perdido',
+          score: val > 4000000 ? 98 : val > 1000000 ? 80 : 60,
+          lastContact: o.updatedAt?.slice(0, 10) || o.createdAt?.slice(0, 10) || '2026-01-01',
+          email: o.email,
+          draftSubject: name ? `Seguimiento GPS — ${name}` : 'Seguimiento GPS — CentralGPS',
+          draftMessage: name ? `Hola ${name.split(' ')[0]},\n\nHace un tiempo conversamos sobre GPS para tu empresa. Quería saber si todavía están evaluando opciones o si ya encontraron una solución.\n\nTenemos disponibilidad inmediata y podemos armar una propuesta ajustada a lo que necesites.\n\n¿Te interesa retomar la conversación?\n\nSaludos,\nFrancisco` : '',
+          draftStatus: 'draft' as const,
+        };
+      }),
       liveRisks,
       _meta: {
         mode: 'snapshot',
