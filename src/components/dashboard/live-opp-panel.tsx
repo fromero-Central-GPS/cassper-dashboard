@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { LiveOpportunityRisk } from '@/lib/ghl-types';
-import { AlertTriangle, Activity, CheckCircle } from 'lucide-react';
+import { AlertTriangle, Activity, CheckCircle, User } from 'lucide-react';
 
 interface LiveOppPanelProps {
   risks: LiveOpportunityRisk[];
@@ -51,7 +51,15 @@ export function LiveOppPanel({ risks }: LiveOppPanelProps) {
               <div className="flex justify-between items-start mb-2">
                 <div>
                   <h4 className="text-slate-100 font-medium">{risk.contactName || 'Unknown Contact'}</h4>
-                  <p className="text-slate-400 text-sm">Value: ${risk.value.toLocaleString()}</p>
+                  <div className="flex items-center gap-3 text-sm">
+                    <p className="text-slate-400">Value: ${risk.value.toLocaleString()}</p>
+                    {risk.assignedTo && (
+                      <p className="text-slate-500 flex items-center gap-1">
+                        <User className="w-3 h-3" />
+                        {risk.assignedTo}
+                      </p>
+                    )}
+                  </div>
                 </div>
                 <Badge variant={risk.riskScore > 70 ? 'destructive' : risk.riskScore > 40 ? 'secondary' : 'default'}>
                   Score: {risk.riskScore}/100

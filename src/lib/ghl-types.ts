@@ -130,6 +130,7 @@ export interface LiveOpportunityRisk {
   riskScore: number;
   warnings: string[];
   recommendedAction: string;
+  assignedTo?: string;
 }
 
 export interface WonTrackPattern {

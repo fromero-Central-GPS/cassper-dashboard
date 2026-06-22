@@ -81,6 +81,7 @@ export const mockDashboardData: DashboardData = {
       riskScore: 55,
       warnings: ['6 días sin seguimiento visible', 'Stage: Calificado — sin avance desde creación', 'Sin conversación registrada en GHL'],
       recommendedAction: 'Iniciar contacto por WhatsApp (+56982018007). Prioridad alta por ser la opp abierta de mayor valor ($831K). Enviar demo personalizada de dashcam Howen V8.',
+      assignedTo: 'Sandra Valdes',
     },
     {
       contactName: 'TIMBERLAM SPA',
@@ -88,6 +89,7 @@ export const mockDashboardData: DashboardData = {
       riskScore: 52,
       warnings: ['6 días desde creación sin avance de stage', 'Sin respuesta a cotización enviada', 'Stage: Calificado — puede enfriarse'],
       recommendedAction: 'Hacer seguimiento a cotización de 2x Plan Lite Anual. Llamar a +56982255023 si no hay respuesta por WhatsApp en 24h.',
+      assignedTo: 'Sandra Valdes',
     },
     {
       contactName: 'Niko Guzmán (Constructora NGL)',
@@ -95,6 +97,7 @@ export const mockDashboardData: DashboardData = {
       riskScore: 22,
       warnings: ['2 mensajes sin leer del vendedor', 'Cliente dijo "Le confirmo mañana" — sin respuesta aún'],
       recommendedAction: 'Responder mensajes pendientes. Cliente activo hoy — alta intención de compra. Coordinar instalación en Santiago (gratis en RM).',
+      assignedTo: 'Sandra Valdes',
     },
     {
       contactName: 'José Araya (Transp. Araya Rivera)',
@@ -102,6 +105,7 @@ export const mockDashboardData: DashboardData = {
       riskScore: 58,
       warnings: ['3 días sin respuesta a mensaje de outreach', 'Nota interna: "pendiente"', 'Sin inbound desde 15 Jun'],
       recommendedAction: 'Reintentar contacto. Si no responde en 48h, escalar a llamada. Cliente busca GPS anti-robo — intención clara pero sin engagement.',
+      assignedTo: 'Sandra Valdes',
     },
     {
       contactName: 'Jair Jamet (REDVOLTIA)',
@@ -109,6 +113,7 @@ export const mockDashboardData: DashboardData = {
       riskScore: 15,
       warnings: ['Onboarding enviado — sin confirmación de acceso', 'Último mensaje outbound (instrucciones de plataforma)'],
       recommendedAction: 'Verificar si el cliente accedió a la plataforma. Agendar capacitación si no lo ha hecho. Bajo riesgo — deal en etapa final.',
+      assignedTo: 'Sandra Valdes',
     },
     {
       contactName: 'Remuneraciones (Makersolutions)',
@@ -116,6 +121,7 @@ export const mockDashboardData: DashboardData = {
       riskScore: 48,
       warnings: ['Cotización enviada sin respuesta', 'Sin conversación previa — lead frío', 'Valor $0 — posiblemente incompleto'],
       recommendedAction: 'Completar valor de la oportunidad en GHL. Hacer seguimiento a cotización de 3 vehículos Plan Lite Anual enviada a aorellana@grupomaker.com.',
+      assignedTo: 'Sandra Valdes',
     },
   ],
   // Won Track — patrones REALES extraídos de 10 oportunidades ganadas muestreadas (18 Jun 2026)
