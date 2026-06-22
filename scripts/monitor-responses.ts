@@ -398,7 +398,7 @@ export async function checkGmailForReplies(
       const query = `from:${send.contact_email} newer_than:${Math.floor((Date.now() - sentTs) / 1000)}s`;
       const result = execSync(
         `export GOG_KEYRING_PASSWORD="gogcli-mcp-2026" && ` +
-        `gog gmail search --query "${query}" --account fromero@centralgps.cl --max-results 3`,
+        `gog gmail search "${query}" --account fromero@centralgps.cl --max 3`,
         { encoding: 'utf-8', timeout: 10000 }
       ).trim();
 

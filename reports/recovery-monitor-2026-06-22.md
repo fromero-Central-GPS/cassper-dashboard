@@ -1,7 +1,7 @@
 # 📬 Monitoreo de Respuestas — 2026-06-22
 
-**Generado:** 22-06-2026, 3:22:53 p. m.
-**Sends monitoreados:** 10
+**Generado:** 22-06-2026, 3:30:58 p. m.
+**Sends monitoreados:** 8
 
 ---
 
@@ -13,8 +13,8 @@
 | Positivas | 0 🟢 |
 | Negativas | 0 🔴 |
 | Neutrales | 0 🟡 |
-| Follow-ups disparados | 3 |
-| Archivados | 2 |
+| Follow-ups disparados | 0 |
+| Archivados | 0 |
 
 ---
 
@@ -34,18 +34,6 @@
 | Conversiones | 1 |
 | Valor recuperado | $4.300.000 |
 | Valor total campaña | $10.728.575 |
-
----
-
-## 🔍 Detalle de Acciones
-
-| Contacto | Estado Anterior | Nuevo Estado | Acción | Detalle |
-|---|---|---|---|---|
-| Victor Noriega | awaiting_response | archived | archived | 7 días sin respuesta. Archivado automáticamente. |
-| Edita Cortes | awaiting_response | archived | archived | 7 días sin respuesta. Archivado automáticamente. |
-| Cristobal Pulgar | awaiting_response | followup_sent | followup_triggered | 3 días sin respuesta. Follow-up automático activado. |
-| Nivaldo | awaiting_response | followup_sent | followup_triggered | 3 días sin respuesta. Follow-up automático activado. |
-| Daniel Calla Neri | awaiting_response | followup_sent | followup_triggered | 3 días sin respuesta. Follow-up automático activado. |
 
 ---
 

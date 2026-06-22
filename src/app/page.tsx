@@ -26,11 +26,19 @@ export default function Home() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const [sRes, fRes, rRes] = await Promise.all([
-          fetch('/api/ghl/summary?mode=mock'),
+        // Try snapshot first (production data), fall back to mock
+        let [sRes, fRes, rRes] = await Promise.all([
+          fetch('/api/ghl/summary?mode=snapshot'),
           fetch('/api/ghl/forensics?mode=mock'),
           fetch('/api/recovery/campaigns?mode=mock'),
         ]);
+        if (!sRes.ok) {
+          [sRes, fRes, rRes] = await Promise.all([
+            fetch('/api/ghl/summary?mode=mock'),
+            fetch('/api/ghl/forensics?mode=mock'),
+            fetch('/api/recovery/campaigns?mode=mock'),
+          ]);
+        }
         const summaryJson = await sRes.json();
         setData(summaryJson);
         const forensicsJson: ForensicsApiResponse = await fRes.json();

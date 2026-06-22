@@ -1,0 +1,491 @@
+{
+  "generatedAt": "2026-06-22T19:33:31Z",
+  "source": "GHL MCP — opportunities_search-opportunity",
+  "counts": {
+    "lost": 30,
+    "lostValue": 59902105,
+    "withEmail": 29,
+    "recoverableValue": 54169803
+  },
+  "opportunities": [
+    {
+      "id": "D34CU5fEA5RQvVKKOlFI",
+      "name": "ENCUESTA - EPYSA",
+      "value": 4300000,
+      "status": "lost",
+      "stageId": "8f1f9bc8-5ee8-428d-a67e-927b853b6d9f",
+      "contactName": "MARITZA ADRIANA GONZALEZ ALBORNOZ",
+      "email": "maritza.gonzalez@epysa.cl",
+      "phone": "+56941435410",
+      "tags": [
+        "10 a 49 vehículos",
+        "prospecto"
+      ],
+      "createdAt": "2026-05-11T16:32:08.821Z",
+      "updatedAt": "2026-06-17T15:41:05.312Z"
+    },
+    {
+      "id": "9TY3TCAck2cIVkT4Peof",
+      "name": "ENCUESTA - Martin",
+      "value": 0,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Martin Jara",
+      "email": "operaciones@hhforestal.cl",
+      "phone": "+56930813365",
+      "tags": [
+        "2 a 9 vehículos",
+        "prospecto"
+      ],
+      "createdAt": "2026-04-28T23:32:55.700Z",
+      "updatedAt": "2026-05-11T13:35:21.450Z"
+    },
+    {
+      "id": "oGum0iLkFmKBwy0gQPy4",
+      "name": "Rafael Rebollo A",
+      "value": 0,
+      "status": "lost",
+      "stageId": "84c42420-0ec8-4cf4-bcf5-defec7d50783",
+      "contactName": "Rafael Rebollo A",
+      "email": "rafael@rmh.cl",
+      "phone": "+56963345524",
+      "tags": [
+        "prospecto"
+      ],
+      "createdAt": "2026-04-10T17:04:48.609Z",
+      "updatedAt": "2026-04-16T12:59:49.668Z"
+    },
+    {
+      "id": "lSBIfClCCNF1hd4OSgwB",
+      "name": "Arthur",
+      "value": 1322745,
+      "status": "lost",
+      "stageId": "dc05554e-7ed7-47d0-bb07-90d8fe1c829a",
+      "contactName": "Arthur",
+      "email": "corderoarturo@yahoo.com",
+      "phone": "+56990169859",
+      "tags": [
+        "prospecto",
+        "calificado"
+      ],
+      "createdAt": "2026-04-09T16:15:30.225Z",
+      "updatedAt": "2026-04-13T18:23:04.818Z"
+    },
+    {
+      "id": "yJUcoR3iCgx1gETAJqje",
+      "name": "ENCUESTA - Sergio",
+      "value": 0,
+      "status": "lost",
+      "stageId": "84c42420-0ec8-4cf4-bcf5-defec7d50783",
+      "contactName": "sergio castillo",
+      "email": "sgonzalez9810@icloud.com",
+      "phone": "+56965157710",
+      "tags": [
+        "10 a 49 vehículos",
+        "prospecto"
+      ],
+      "createdAt": "2026-04-07T14:40:15.584Z",
+      "updatedAt": "2026-05-28T17:58:45.236Z"
+    },
+    {
+      "id": "TqZplVOIduUPImHiEJUI",
+      "name": "Yo Acelerando Ahora Disti",
+      "value": 653404,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Yo Acelerando Ahora Disti",
+      "email": "farmas2013@live.cl",
+      "phone": "+56945874416",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-03-30T19:02:36.065Z",
+      "updatedAt": "2026-05-15T13:39:30.270Z"
+    },
+    {
+      "id": "xyS94RNwV2F2GoXPQnrk",
+      "name": "ENCUESTA - Alison",
+      "value": 0,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Alison Navarrete",
+      "email": "alisonnavarrete24@gmail.com",
+      "phone": "+56930222765",
+      "tags": [
+        "10 a 49 vehículos",
+        "prospecto"
+      ],
+      "createdAt": "2026-03-19T00:34:57.454Z",
+      "updatedAt": "2026-03-19T16:21:38.369Z"
+    },
+    {
+      "id": "h1nJUm8i73R9eX88OxCe",
+      "name": "Tabita",
+      "value": 59762,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Tabita",
+      "email": "tabita.solis@sermat.cl",
+      "phone": "+56966008589",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-03-13T14:42:03.583Z",
+      "updatedAt": "2026-05-15T15:04:04.397Z"
+    },
+    {
+      "id": "XoKHq7MfcxSJRdorEwNr",
+      "name": "Ryan",
+      "value": 238800,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Ryan",
+      "email": "ryantran5588@gmail.com",
+      "phone": "+56953777206",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-03-11T13:15:48.017Z",
+      "updatedAt": "2026-05-15T15:02:35.094Z"
+    },
+    {
+      "id": "lrUGnaYUqERhiywPoQ0x",
+      "name": "Sebastián Severino",
+      "value": 41116655,
+      "status": "lost",
+      "stageId": "62d38776-ffcf-42ed-9ae3-95537c8bb3dc",
+      "contactName": "Sebastián Severino",
+      "email": "sebastian.severino@soser.cl",
+      "phone": "+56953718912",
+      "tags": [
+        "prospecto"
+      ],
+      "createdAt": "2026-03-09T21:07:29.521Z",
+      "updatedAt": "2026-04-16T15:46:28.128Z"
+    },
+    {
+      "id": "NWcI3tfDvENArQhyP5e5",
+      "name": "Maximiliano Echeverría",
+      "value": 48000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Maximiliano Echeverría",
+      "email": "maxecheverria@irep.cl",
+      "phone": "+56996336974",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-03-06T18:57:41.453Z",
+      "updatedAt": "2026-05-15T14:59:50.046Z"
+    },
+    {
+      "id": "7pIRlPehb4w25ocqtZav",
+      "name": "Nachito❤️‍🔥⚽️",
+      "value": 140000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Nachito❤️‍🔥⚽️",
+      "email": "ignacio.espinoza@eternox.cl",
+      "phone": "+56959508693",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-03-06T16:49:00.650Z",
+      "updatedAt": "2026-05-15T14:57:56.174Z"
+    },
+    {
+      "id": "BrcSZWwQcTeXXbRsKyX1",
+      "name": "TRANSPORTE HERNANDEZ GROUP SPA",
+      "value": 199000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "TRANSPORTE HERNANDEZ GROUP SPA",
+      "email": "hernandezfabian009@gmail.com",
+      "phone": "+56947492655",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-03-06T14:42:25.478Z",
+      "updatedAt": "2026-05-15T14:54:55.036Z"
+    },
+    {
+      "id": "uMx4vCUvhXYVsmKKOElD",
+      "name": "ENCUESTA - Jorge",
+      "value": 120000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Jorge Cisternas",
+      "email": "jcisternas@eys.cl",
+      "phone": "+56923932901",
+      "tags": [
+        "2 a 9 vehículos",
+        "prospecto",
+        "calificado"
+      ],
+      "createdAt": "2026-03-05T12:45:05.552Z",
+      "updatedAt": "2026-05-15T14:51:37.590Z"
+    },
+    {
+      "id": "1K57AdV5yqqRavLoOpMn",
+      "name": "Osvaldo Cadiz",
+      "value": 1194230,
+      "status": "lost",
+      "stageId": "62d38776-ffcf-42ed-9ae3-95537c8bb3dc",
+      "contactName": "Osvaldo Cadiz",
+      "email": "osvaldo.cadiz@movecar.pro",
+      "phone": "+56935967655",
+      "tags": [
+        "prospecto"
+      ],
+      "createdAt": "2026-03-04T15:26:01.826Z",
+      "updatedAt": "2026-04-09T15:40:59.126Z"
+    },
+    {
+      "id": "ZFKPpo3skQQTQLmywMHZ",
+      "name": "Li Ma",
+      "value": 238000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Li Ma",
+      "email": "mario.860123@gmail.com",
+      "phone": "+56981528888",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-03-04T13:57:19.896Z",
+      "updatedAt": "2026-05-15T14:40:19.589Z"
+    },
+    {
+      "id": "7qVSGmsMJy8iRJ1EQTTt",
+      "name": "Nivaldo",
+      "value": 303000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Nivaldo",
+      "email": "tritomyen.314@gmail.com",
+      "phone": "+56957043958",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-03-04T13:10:58.587Z",
+      "updatedAt": "2026-05-15T14:43:50.473Z"
+    },
+    {
+      "id": "gysbhvRI8flxQ11F3b16",
+      "name": "ENCUESTA - Iker",
+      "value": 0,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Iker",
+      "email": "ikerdainef84@gmail.com",
+      "phone": "+56939592897",
+      "tags": [
+        "+50 vehículos",
+        "prospecto"
+      ],
+      "createdAt": "2026-03-03T00:23:29.763Z",
+      "updatedAt": "2026-03-05T11:56:40.315Z"
+    },
+    {
+      "id": "XpYjeZo62r9GO1u3HLKd",
+      "name": "ENCUESTA - Daniel",
+      "value": 0,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Daniel Tremont",
+      "email": "contacto@transnovus.cl",
+      "phone": "+56961410005",
+      "tags": [
+        "1 vehículo",
+        "prospecto"
+      ],
+      "createdAt": "2026-03-02T20:44:56.645Z",
+      "updatedAt": "2026-04-23T21:54:56.939Z"
+    },
+    {
+      "id": "j1B3CwcRUia9B9yeOnBt",
+      "name": "Jacqueline rent a Car",
+      "value": 5732302,
+      "status": "lost",
+      "stageId": "62d38776-ffcf-42ed-9ae3-95537c8bb3dc",
+      "contactName": "Jacqueline rent a Car",
+      "email": null,
+      "phone": "+56978622546",
+      "tags": [
+        "prospecto"
+      ],
+      "createdAt": "2026-03-02T18:47:09.236Z",
+      "updatedAt": "2026-03-09T15:05:21.243Z"
+    },
+    {
+      "id": "Fvml6RQOeCzfgLV1NW3A",
+      "name": "Leo Plaza",
+      "value": 140000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Leo Plaza",
+      "email": "leonardops1071@gmail.com",
+      "phone": "+56929092463",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-02-28T16:38:41.130Z",
+      "updatedAt": "2026-05-15T13:46:45.148Z"
+    },
+    {
+      "id": "amxh6WW7gLMuMSw2fNxB",
+      "name": "Dani",
+      "value": 283000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Daniel Calla Neri",
+      "email": "dcalla@fruticolaesmeralda.cl",
+      "phone": "+56995048364",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-02-25T15:38:46.005Z",
+      "updatedAt": "2026-05-07T15:12:36.554Z"
+    },
+    {
+      "id": "BaIJku7bC4BWt98J8Kfg",
+      "name": "ENCUESTA - Mariela",
+      "value": 99990,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Mariela",
+      "email": "marielajj96@gmail.com",
+      "phone": "+56968674007",
+      "tags": [
+        "1 vehículo",
+        "prospecto",
+        "calificado"
+      ],
+      "createdAt": "2026-02-25T14:21:47.508Z",
+      "updatedAt": "2026-04-13T13:41:52.870Z"
+    },
+    {
+      "id": "eTxU0ePqWj9IBrPFxze0",
+      "name": "Jorge Departamento De TI",
+      "value": 1431646,
+      "status": "lost",
+      "stageId": "dc05554e-7ed7-47d0-bb07-90d8fe1c829a",
+      "contactName": "Jorge Departamento De TI",
+      "email": "jorge.munoz@corachi.cl",
+      "phone": "+56934544274",
+      "tags": [
+        "prospecto",
+        "calificado"
+      ],
+      "createdAt": "2026-02-24T20:18:18.529Z",
+      "updatedAt": "2026-03-16T17:07:27.499Z"
+    },
+    {
+      "id": "Wsj1DbzSMlKAxwJMLTGH",
+      "name": "Mdmdesign.cl",
+      "value": 240000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Mdmdesign.cl",
+      "email": "finanzas@acacia-is.cl",
+      "phone": "+56939493284",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-02-24T17:54:46.026Z",
+      "updatedAt": "2026-05-15T13:37:07.442Z"
+    },
+    {
+      "id": "HlzbjOO4t8ilM6dOavOD",
+      "name": "ENCUESTA - Yihan",
+      "value": 0,
+      "status": "lost",
+      "stageId": "84c42420-0ec8-4cf4-bcf5-defec7d50783",
+      "contactName": "Yihan",
+      "email": "yihanjimena@gmail.com",
+      "phone": "+34621010989",
+      "tags": [
+        "+50 vehículos",
+        "prospecto"
+      ],
+      "createdAt": "2026-02-23T21:13:44.155Z",
+      "updatedAt": "2026-04-10T13:27:52.407Z"
+    },
+    {
+      "id": "dpp2otPZtRZybuZ79GIK",
+      "name": "Cristobal Pulgar",
+      "value": 352000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Cristobal Pulgar",
+      "email": "pulgarcristobal03@gmail.com",
+      "phone": "+56941272342",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-02-18T19:52:54.782Z",
+      "updatedAt": "2026-05-15T14:41:49.867Z"
+    },
+    {
+      "id": "ppXzUR2DkI1r8k2WIa2S",
+      "name": "ENCUESTA - Victor",
+      "value": 248000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Victor Noriega",
+      "email": "gerencia@stranslenor.com",
+      "phone": "+56962958099",
+      "tags": [
+        "2 a 9 vehículos",
+        "prospecto",
+        "calificado"
+      ],
+      "createdAt": "2026-02-18T16:04:39.867Z",
+      "updatedAt": "2026-05-15T14:45:30.894Z"
+    },
+    {
+      "id": "fLpuL7wRRfjFz7cq0i6a",
+      "name": "CONSTRUCCIONES MC VARGAS",
+      "value": 1300571,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "CONSTRUCCIONES MC VARGAS",
+      "email": "jsanchez@maquinariasmcv.cl",
+      "phone": "+56934578899",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-02-18T15:53:03.409Z",
+      "updatedAt": "2026-05-15T14:47:29.662Z"
+    },
+    {
+      "id": "WBpFix4l1zfLAReP9Op1",
+      "name": "Diego Camelo",
+      "value": 141000,
+      "status": "lost",
+      "stageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+      "contactName": "Diego Camelo",
+      "email": "djcamelo18@yahoo.es",
+      "phone": "+56920014352",
+      "tags": [
+        "calificado",
+        "prospecto"
+      ],
+      "createdAt": "2026-02-18T15:44:35.772Z",
+      "updatedAt": "2026-05-15T13:44:13.320Z"
+    }
+  ]
+}
