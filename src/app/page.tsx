@@ -23,14 +23,29 @@ export default function Home() {
       setLoading(true);
       try {
         const [summaryRes, forensicsRes] = await Promise.all([
-          fetch('/api/ghl/summary?mode=mock'),
-          fetch('/api/ghl/forensics?mode=mock'),
+          fetch('/api/ghl/summary?mode=stored'),
+          fetch('/api/ghl/forensics?mode=stored'),
         ]);
-        const summaryJson = await summaryRes.json();
-        setData(summaryJson);
-        const forensicsJson: ForensicsApiResponse = await forensicsRes.json();
-        if (forensicsJson.batchResult) {
-          setForensics(forensicsJson.batchResult as unknown as BatchAnalysisResult);
+
+        if (summaryRes.status === 404) {
+          // Fall back to mock if no pipeline run exists yet
+          const [sRes, fRes] = await Promise.all([
+            fetch('/api/ghl/summary?mode=mock'),
+            fetch('/api/ghl/forensics?mode=mock'),
+          ]);
+          const summaryJson = await sRes.json();
+          setData(summaryJson);
+          const forensicsJson: ForensicsApiResponse = await fRes.json();
+          if (forensicsJson.batchResult) {
+            setForensics(forensicsJson.batchResult as unknown as BatchAnalysisResult);
+          }
+        } else {
+          const summaryJson = await summaryRes.json();
+          setData(summaryJson);
+          const forensicsJson: ForensicsApiResponse = await forensicsRes.json();
+          if (forensicsJson.batchResult) {
+            setForensics(forensicsJson.batchResult as unknown as BatchAnalysisResult);
+          }
         }
       } catch (err) {
         console.error("Error fetching data:", err);

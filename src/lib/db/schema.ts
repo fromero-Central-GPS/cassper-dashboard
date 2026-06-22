@@ -158,7 +158,44 @@ CREATE TABLE IF NOT EXISTS commission_config (
   notify_cancellation         INTEGER NOT NULL DEFAULT 1
 );
 
--- Indexes for common queries
+-- Commission alerts
+CREATE TABLE IF NOT EXISTS commission_alerts (
+  id          TEXT PRIMARY KEY,
+  type        TEXT NOT NULL CHECK (type IN (
+    'A1_NUEVO_DISPOSITIVO_UPSELL',
+    'A2_BAJA_DISPOSITIVO_FACTURADO',
+    'A3_CLIENTE_NUEVO_SIN_VENDEDOR',
+    'A4_DISCREPANCIA_DISPOSITIVOS',
+    'A5_FACTURA_IMPAGA',
+    'A6_CONTRATO_CANCELADO',
+    'A7_PAGO_LIBERADO',
+    'A8_PAGO_RETENIDO'
+  )),
+  title       TEXT NOT NULL,
+  description TEXT NOT NULL,
+  severity    TEXT NOT NULL CHECK (severity IN ('low','medium','high','critical')),
+  contract_id TEXT REFERENCES contracts(id),
+  seller_id   TEXT REFERENCES sellers(id),
+  client_id   TEXT REFERENCES clients(id),
+  metadata_json TEXT,
+  is_read     INTEGER NOT NULL DEFAULT 0,
+  created_at  TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- Pipeline runs (daily GHL analysis results)
+CREATE TABLE IF NOT EXISTS pipeline_runs (
+  id                TEXT PRIMARY KEY,
+  run_at            TEXT NOT NULL,
+  pipeline_id       TEXT NOT NULL,
+  pipeline_name     TEXT NOT NULL,
+  total_analyzed    INTEGER NOT NULL DEFAULT 0,
+  summary_json      TEXT NOT NULL,
+  conversations_json TEXT,
+  status            TEXT NOT NULL DEFAULT 'completed'
+                    CHECK (status IN ('completed','failed','running')),
+  error_message     TEXT,
+  created_at        TEXT NOT NULL DEFAULT (datetime('now'))
+);\n\n-- Indexes for common queries
 CREATE INDEX IF NOT EXISTS idx_contracts_seller   ON contracts(seller_id);
 CREATE INDEX IF NOT EXISTS idx_contracts_client   ON contracts(client_id);
 CREATE INDEX IF NOT EXISTS idx_contracts_status   ON contracts(status);
@@ -170,7 +207,9 @@ CREATE INDEX IF NOT EXISTS idx_invoices_client    ON invoices(client_id);
 CREATE INDEX IF NOT EXISTS idx_invoices_period    ON invoices(period);
 CREATE INDEX IF NOT EXISTS idx_gps_devices_client ON gps_devices(client_id);
 CREATE INDEX IF NOT EXISTS idx_gps_devices_contract ON gps_devices(contract_id);
-CREATE INDEX IF NOT EXISTS idx_contract_devices_contract ON contract_devices(contract_id);
+CREATE INDEX IF NOT EXISTS idx_contract_devices_contract ON contract_devices(contract_id);\nCREATE INDEX IF NOT EXISTS idx_commission_alerts_type ON commission_alerts(type);\nCREATE INDEX IF NOT EXISTS idx_commission_alerts_severity ON commission_alerts(severity);\nCREATE INDEX IF NOT EXISTS idx_commission_alerts_seller ON commission_alerts(seller_id);\nCREATE INDEX IF NOT EXISTS idx_commission_alerts_is_read ON commission_alerts(is_read);
+CREATE INDEX IF NOT EXISTS idx_pipeline_runs_run_at ON pipeline_runs(run_at DESC);
+CREATE INDEX IF NOT EXISTS idx_pipeline_runs_pipeline ON pipeline_runs(pipeline_id);
 `;
 
 export function initSchema(db?: Database.Database): void {

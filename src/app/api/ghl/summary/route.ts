@@ -4,6 +4,7 @@ import {
   estimateAnalysisCost,
   type BatchAnalysisResult,
 } from '@/lib/analysis-engine';
+import { PipelineRunRepository } from '@/lib/db';
 
 /**
  * GET /api/ghl/summary
@@ -32,6 +33,7 @@ import {
  *
  * Modos de operación:
  * - ?mode=mock      → datos mock (default en desarrollo)
+ * - ?mode=stored    → datos del último pipeline run almacenado en BD
  * - ?mode=live      → datos reales del MCP (requiere Paperclip runtime)
  * - ?mode=estimate  → solo devuelve estimación de costo
  */
@@ -50,6 +52,129 @@ export async function GET(request: Request) {
       cost,
       note: 'Costos basados en Sonnet 4.6 pricing ($3/$15 por MTok input/output)',
     });
+  }
+
+  // Modo stored: último pipeline run desde BD
+  if (mode === 'stored') {
+    try {
+      const repo = new PipelineRunRepository();
+      const run = repo.getLatest();
+
+      if (!run) {
+        return NextResponse.json({
+          error: 'No hay pipeline runs almacenados. Ejecuta la rutina diaria primero.',
+          hint: 'Corre npx tsx scripts/daily-pipeline.ts --mock para generar datos de prueba.',
+          _meta: { mode: 'stored', available: false },
+        }, { status: 404 });
+      }
+
+      const summary = JSON.parse(run.summaryJson);
+      const conversations = run.conversationsJson ? JSON.parse(run.conversationsJson) : [];
+
+      // Reconstruir dashboard data desde el batch almacenado
+      const lossReasons = (summary.topLossReasons ?? []).map((r: { reason: string; count: number; value: number }) => ({
+        reason: r.reason,
+        count: r.count,
+        value: r.value,
+        percentage: summary.totalValue > 0 ? Math.round((r.value / summary.totalValue) * 100) : 0,
+      }));
+
+      const lossPhases = (summary.lossByStage ?? []).map((s: { stage: string; count: number; value: number }) => ({
+        phase: s.stage,
+        count: s.count,
+        value: s.value,
+      }));
+
+      const recoverableTickets = conversations
+        .filter((c: { recoverability?: { priority: string } }) =>
+          c.recoverability?.priority === 'urgent' || c.recoverability?.priority === 'high'
+        )
+        .slice(0, 20)
+        .map((c: {
+          conversationId: string;
+          contactName: string;
+          opportunityValue: number;
+          channel: string;
+          lossReason: { primaryReason: string };
+          stageClassification: { detectedStage: string };
+          recoverability: { totalScore: number; priority: string };
+          abandonment: { lastInboundDate: string | null; daysSinceLastContact: number };
+        }) => ({
+          id: c.conversationId,
+          contactName: c.contactName,
+          value: c.opportunityValue,
+          channel: c.channel as 'WhatsApp' | 'Email' | 'SMS',
+          date: c.abandonment.lastInboundDate ?? run.runAt,
+          priority: c.recoverability.priority as 'urgent' | 'high' | 'medium' | 'low',
+          lossReason: c.lossReason.primaryReason,
+          stage: c.stageClassification.detectedStage,
+          score: c.recoverability.totalScore,
+          lastContact: c.abandonment.lastInboundDate ?? run.runAt,
+        }));
+
+      const dashboardData = {
+        summary: {
+          totalEstimatedValue: summary.totalValue ?? 0,
+          closedWonValue: summary.wonTotalValue ?? 0,
+          lostValue: (summary.totalValue ?? 0) - (summary.recoverableValue ?? 0),
+          recoverableValue: summary.recoverableValue ?? 0,
+          conversionRate: summary.totalValue > 0
+            ? Math.round(((summary.wonTotalValue ?? 0) / summary.totalValue) * 100)
+            : 0,
+          totalConversations: run.totalAnalyzed,
+          wonConversations: summary.winPatterns?.length ?? 0,
+          lostConversations: run.totalAnalyzed,
+        },
+        lossByPhase: lossPhases,
+        lossByReason: lossReasons,
+        recoverableTickets,
+        campaigns: [],
+        pipelineName: run.pipelineName,
+        liveRisks: (summary.earlyWarnings ?? []).map((w: {
+          contactName: string;
+          value: number;
+          severity: number;
+          warnings: string[];
+          intentSignals: string[];
+        }) => ({
+          contactName: w.contactName,
+          value: w.value,
+          riskScore: w.severity === 0 ? 90 : w.severity === 1 ? 70 : 50,
+          warnings: w.warnings,
+          recommendedAction: w.severity === 0
+            ? 'Contactar inmediatamente'
+            : 'Programar seguimiento prioritario',
+        })),
+        wonPatterns: (summary.winPatterns ?? []).map((w: {
+          contactName: string;
+          value: number;
+          timeToClose: number;
+          winningFactors: string[];
+        }) => ({
+          dealType: w.contactName,
+          avgTimeToCloseDays: w.timeToClose,
+          keySuccessFactors: w.winningFactors,
+          commonBuyingSignals: [],
+        })),
+        lossTrends: [],
+      };
+
+      return NextResponse.json({
+        ...dashboardData,
+        _meta: {
+          mode: 'stored',
+          analyzedAt: run.runAt,
+          runId: run.id,
+          note: 'Datos del último pipeline run almacenado en BD.',
+        },
+      });
+    } catch (err) {
+      return NextResponse.json({
+        error: 'Error al leer pipeline run de BD',
+        detail: String(err),
+        _meta: { mode: 'stored' },
+      }, { status: 500 });
+    }
   }
 
   // Modo mock: datos predefinidos (desarrollo/demo)

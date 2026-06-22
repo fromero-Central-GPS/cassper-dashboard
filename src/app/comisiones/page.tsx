@@ -10,6 +10,7 @@ import {
   BarChart3,
   RefreshCw,
   FileText,
+  FileSearch,
   DollarSign,
   TrendingUp,
   AlertTriangle,
@@ -95,6 +96,31 @@ export default function ComisionesPage() {
               </div>
             </div>
             <div className="flex items-center gap-3">
+              <a
+                href="/comisiones/auditoria"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-emerald-400 text-xs hover:bg-emerald-500/10 hover:border-emerald-500/20 transition-colors"
+              >
+                <FileSearch className="w-3.5 h-3.5" />
+                Auditoría
+              </a>
+              <a
+                href="/comisiones/discrepancias"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-amber-400 text-xs hover:bg-amber-500/10 hover:border-amber-500/20 transition-colors"
+              >
+                Discrepancias
+              </a>
+              <a
+                href="/comisiones/alertas"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-rose-400 text-xs hover:bg-rose-500/10 hover:border-rose-500/20 transition-colors"
+              >
+                Alertas
+              </a>
+              <a
+                href="/comisiones/cfo"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-blue-400 text-xs hover:bg-blue-500/10 hover:border-blue-500/20 transition-colors"
+              >
+                CFO
+              </a>
               <a
                 href={`/api/commissions/report?period=${data.currentPeriod}&format=csv`}
                 className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-300 text-xs hover:bg-slate-700/50 transition-colors"

@@ -3,8 +3,11 @@ import {
   analyzeConversation,
   generateBatchSummary,
   type GHLConversationInput,
+  type GHLMessage,
   type BatchAnalysisResult,
 } from '@/lib/analysis-engine';
+import { readForensicsCache, getCacheAgeSeconds } from '@/lib/forensics-cache';
+import { PipelineRunRepository } from '@/lib/db';
 
 /**
  * GET /api/ghl/forensics
@@ -14,48 +17,58 @@ import {
  *
  * Modos:
  * - ?mode=mock → datos mock generados dinámicamente desde el engine
- * - ?mode=live → requiere Paperclip runtime con MCP
+ * - ?mode=live → datos reales desde caché (pre-poblado por Paperclip heartbeat)
+ *
+ * El caché se actualiza periódicamente por un heartbeat de Paperclip
+ * que llama a las herramientas MCP de GHL:
+ *   - opportunities_search-opportunity (status=lost, limit=50)
+ *   - conversations_search-conversation (por contactId)
+ *   - conversations_get-messages (por conversationId)
+ *
+ * @see CEN-998: Forense con conversaciones reales
+ * @see src/lib/forensics-cache.ts
+ * @see scripts/build-forensics-cache.ts
  */
 
-// ─── Mock conversaciones representativas del pipeline Central GPS ─────────
+// ─── Mock messages (datos representativos del pipeline Central GPS) ─────
 
-const MOCK_MESSAGES = [
-  { id: 'm1', direction: 'outbound' as const, body: 'Hola, gracias por contactar a Central GPS. ¿En qué puedo ayudarte?', messageType: 'TYPE_SMS', dateAdded: '2026-06-10T10:00:00Z' },
-  { id: 'm2', direction: 'inbound' as const, body: 'Hola, me interesa el servicio de rastreo para una flota de 5 camiones', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-10T10:05:00Z' },
-  { id: 'm3', direction: 'outbound' as const, body: 'Perfecto. Te puedo ofrecer nuestro plan Pro con reportes en tiempo real.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-10T10:10:00Z' },
-  { id: 'm4', direction: 'outbound' as const, body: 'El valor es de $45.000 mensuales por equipo, incluye plataforma y soporte.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-10T10:12:00Z' },
-  { id: 'm5', direction: 'inbound' as const, body: 'Ok, gracias por la información. Lo voy a evaluar con mi jefe.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-10T10:15:00Z' },
-  { id: 'm6', direction: 'inbound' as const, body: 'Hola, quería saber los precios de los equipos GPS', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-05-20T09:00:00Z' },
-  { id: 'm7', direction: 'outbound' as const, body: '¡Hola! Claro, tenemos desde $120.000 el equipo básico.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-05-20T09:05:00Z' },
-  { id: 'm8', direction: 'inbound' as const, body: 'Está muy caro, en Wialon me ofrecieron algo similar por menos.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-05-20T09:10:00Z' },
-  { id: 'm9', direction: 'outbound' as const, body: 'Entendible. Nuestra diferencia es el soporte local y la plataforma sin límites.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-05-20T09:15:00Z' },
-  { id: 'm10', direction: 'inbound' as const, body: 'Lo vamos a pensar. Gracias.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-05-20T09:20:00Z' },
-  { id: 'm11', direction: 'outbound' as const, body: 'Buenos días, ¿pudo revisar la cotización que le enviamos?', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-01T11:00:00Z' },
-  { id: 'm12', direction: 'inbound' as const, body: 'Sí, aún no tomo una decisión. Avísame si hay algún descuento.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-01T11:05:00Z' },
-  { id: 'm13', direction: 'outbound' as const, body: 'Le ofrecemos 15% descuento si contrata antes del 15 de junio.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-02T10:00:00Z' },
-  { id: 'm14', direction: 'inbound' as const, body: 'No me alcanza el presupuesto para este mes, muy caro para mi empresa.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-02T10:30:00Z' },
-  { id: 'm15', direction: 'outbound' as const, body: 'Tenemos planes más económicos desde $20.000 mensuales.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-02T10:35:00Z' },
-  { id: 'm16', direction: 'inbound' as const, body: 'Solo estaba cotizando, más adelante les escribo.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-02T10:40:00Z' },
-  { id: 'm17', direction: 'outbound' as const, body: 'Buenas tardes, ¿cómo va el proyecto? Nos interesa seguir ayudándole.', messageType: 'TYPE_EMAIL', dateAdded: '2026-05-10T15:00:00Z' },
-  { id: 'm18', direction: 'inbound' as const, body: 'Hola, disculpa la demora. El proyecto está en pausa.', messageType: 'TYPE_EMAIL', dateAdded: '2026-05-10T15:30:00Z' },
-  { id: 'm19', direction: 'outbound' as const, body: 'Sin problema. Quedamos atentos para cuando reactiven.', messageType: 'TYPE_EMAIL', dateAdded: '2026-05-10T15:35:00Z' },
-  { id: 'm20', direction: 'inbound' as const, body: 'Necesito información sobre integración con su API para nuestro software', messageType: 'TYPE_EMAIL', dateAdded: '2026-04-20T14:00:00Z' },
-  { id: 'm21', direction: 'outbound' as const, body: 'Le envío la documentación de nuestra API REST.', messageType: 'TYPE_EMAIL', dateAdded: '2026-04-20T14:10:00Z' },
-  { id: 'm22', direction: 'inbound' as const, body: 'Gracias. ¿Tienen SDK para Python?', messageType: 'TYPE_EMAIL', dateAdded: '2026-04-20T14:15:00Z' },
-  { id: 'm23', direction: 'outbound' as const, body: 'Sí, tenemos SDK en Python, Java y Node.js. Le comparto ejemplos.', messageType: 'TYPE_EMAIL', dateAdded: '2026-04-20T14:20:00Z' },
-  { id: 'm24', direction: 'inbound' as const, body: 'Excelente. Reviso y te confirmo si me sirve.', messageType: 'TYPE_EMAIL', dateAdded: '2026-04-20T14:25:00Z' },
-  { id: 'm25', direction: 'inbound' as const, body: 'Hola, vi el demo en la página. ¿Puedo agendar una demo personalizada?', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-01-10T09:00:00Z' },
-  { id: 'm26', direction: 'outbound' as const, body: 'Claro, ¿qué día le queda mejor?', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-01-10T09:05:00Z' },
-  { id: 'm27', direction: 'inbound' as const, body: 'El jueves a las 11am', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-01-10T09:10:00Z' },
-  { id: 'm28', direction: 'outbound' as const, body: 'Confirmado. Le enviamos el link de zoom.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-01-10T09:15:00Z' },
-  { id: 'm29', direction: 'inbound' as const, body: 'Hola, hace tiempo que no tengo noticias. ¿Sigue vigente la cotización?', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-03-15T16:00:00Z' },
-  { id: 'm30', direction: 'outbound' as const, body: '¡Claro que sí! Le actualizo los valores hoy.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-03-15T16:30:00Z' },
-  { id: 'm31', direction: 'inbound' as const, body: 'Ya contraté con otra empresa. Gracias de todas formas.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-03-20T10:00:00Z' },
-  { id: 'm32', direction: 'outbound' as const, body: 'Entendemos. Si necesita algo en el futuro, aquí estamos.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-03-20T10:05:00Z' },
-  { id: 'm33', direction: 'inbound' as const, body: 'No saben cómo funciona el sistema para una flota mixta. ¿Podrían explicarme?', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-04-01T11:00:00Z' },
-  { id: 'm34', direction: 'outbound' as const, body: 'Con gusto. Nuestra plataforma soporta camiones, autos y motos en una misma cuenta.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-04-01T11:10:00Z' },
-  { id: 'm35', direction: 'inbound' as const, body: 'Pero es muy caro para 10 vehículos. No me conviene.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-04-01T11:20:00Z' },
-  { id: 'm36', direction: 'outbound' as const, body: 'Entiendo, podemos ajustar el plan a sus necesidades.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-04-01T11:25:00Z' },
+const MOCK_MESSAGES: GHLMessage[] = [
+  { id: 'm1', direction: 'outbound', body: 'Hola, gracias por contactar a Central GPS. ¿En qué puedo ayudarte?', messageType: 'TYPE_SMS', dateAdded: '2026-06-10T10:00:00Z' },
+  { id: 'm2', direction: 'inbound', body: 'Hola, me interesa el servicio de rastreo para una flota de 5 camiones', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-10T10:05:00Z' },
+  { id: 'm3', direction: 'outbound', body: 'Perfecto. Te puedo ofrecer nuestro plan Pro con reportes en tiempo real.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-10T10:10:00Z' },
+  { id: 'm4', direction: 'outbound', body: 'El valor es de $45.000 mensuales por equipo, incluye plataforma y soporte.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-10T10:12:00Z' },
+  { id: 'm5', direction: 'inbound', body: 'Ok, gracias por la información. Lo voy a evaluar con mi jefe.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-10T10:15:00Z' },
+  { id: 'm6', direction: 'inbound', body: 'Hola, quería saber los precios de los equipos GPS', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-05-20T09:00:00Z' },
+  { id: 'm7', direction: 'outbound', body: '¡Hola! Claro, tenemos desde $120.000 el equipo básico.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-05-20T09:05:00Z' },
+  { id: 'm8', direction: 'inbound', body: 'Está muy caro, en Wialon me ofrecieron algo similar por menos.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-05-20T09:10:00Z' },
+  { id: 'm9', direction: 'outbound', body: 'Entendible. Nuestra diferencia es el soporte local y la plataforma sin límites.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-05-20T09:15:00Z' },
+  { id: 'm10', direction: 'inbound', body: 'Lo vamos a pensar. Gracias.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-05-20T09:20:00Z' },
+  { id: 'm11', direction: 'outbound', body: 'Buenos días, ¿pudo revisar la cotización que le enviamos?', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-01T11:00:00Z' },
+  { id: 'm12', direction: 'inbound', body: 'Sí, aún no tomo una decisión. Avísame si hay algún descuento.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-01T11:05:00Z' },
+  { id: 'm13', direction: 'outbound', body: 'Le ofrecemos 15% descuento si contrata antes del 15 de junio.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-02T10:00:00Z' },
+  { id: 'm14', direction: 'inbound', body: 'No me alcanza el presupuesto para este mes, muy caro para mi empresa.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-02T10:30:00Z' },
+  { id: 'm15', direction: 'outbound', body: 'Tenemos planes más económicos desde $20.000 mensuales.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-02T10:35:00Z' },
+  { id: 'm16', direction: 'inbound', body: 'Solo estaba cotizando, más adelante les escribo.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-06-02T10:40:00Z' },
+  { id: 'm17', direction: 'outbound', body: 'Buenas tardes, ¿cómo va el proyecto? Nos interesa seguir ayudándole.', messageType: 'TYPE_EMAIL', dateAdded: '2026-05-10T15:00:00Z' },
+  { id: 'm18', direction: 'inbound', body: 'Hola, disculpa la demora. El proyecto está en pausa.', messageType: 'TYPE_EMAIL', dateAdded: '2026-05-10T15:30:00Z' },
+  { id: 'm19', direction: 'outbound', body: 'Sin problema. Quedamos atentos para cuando reactiven.', messageType: 'TYPE_EMAIL', dateAdded: '2026-05-10T15:35:00Z' },
+  { id: 'm20', direction: 'inbound', body: 'Necesito información sobre integración con su API para nuestro software', messageType: 'TYPE_EMAIL', dateAdded: '2026-04-20T14:00:00Z' },
+  { id: 'm21', direction: 'outbound', body: 'Le envío la documentación de nuestra API REST.', messageType: 'TYPE_EMAIL', dateAdded: '2026-04-20T14:10:00Z' },
+  { id: 'm22', direction: 'inbound', body: 'Gracias. ¿Tienen SDK para Python?', messageType: 'TYPE_EMAIL', dateAdded: '2026-04-20T14:15:00Z' },
+  { id: 'm23', direction: 'outbound', body: 'Sí, tenemos SDK en Python, Java y Node.js. Le comparto ejemplos.', messageType: 'TYPE_EMAIL', dateAdded: '2026-04-20T14:20:00Z' },
+  { id: 'm24', direction: 'inbound', body: 'Excelente. Reviso y te confirmo si me sirve.', messageType: 'TYPE_EMAIL', dateAdded: '2026-04-20T14:25:00Z' },
+  { id: 'm25', direction: 'inbound', body: 'Hola, vi el demo en la página. ¿Puedo agendar una demo personalizada?', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-01-10T09:00:00Z' },
+  { id: 'm26', direction: 'outbound', body: 'Claro, ¿qué día le queda mejor?', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-01-10T09:05:00Z' },
+  { id: 'm27', direction: 'inbound', body: 'El jueves a las 11am', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-01-10T09:10:00Z' },
+  { id: 'm28', direction: 'outbound', body: 'Confirmado. Le enviamos el link de zoom.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-01-10T09:15:00Z' },
+  { id: 'm29', direction: 'inbound', body: 'Hola, hace tiempo que no tengo noticias. ¿Sigue vigente la cotización?', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-03-15T16:00:00Z' },
+  { id: 'm30', direction: 'outbound', body: '¡Claro que sí! Le actualizo los valores hoy.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-03-15T16:30:00Z' },
+  { id: 'm31', direction: 'inbound', body: 'Ya contraté con otra empresa. Gracias de todas formas.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-03-20T10:00:00Z' },
+  { id: 'm32', direction: 'outbound', body: 'Entendemos. Si necesita algo en el futuro, aquí estamos.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-03-20T10:05:00Z' },
+  { id: 'm33', direction: 'inbound', body: 'No saben cómo funciona el sistema para una flota mixta. ¿Podrían explicarme?', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-04-01T11:00:00Z' },
+  { id: 'm34', direction: 'outbound', body: 'Con gusto. Nuestra plataforma soporta camiones, autos y motos en una misma cuenta.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-04-01T11:10:00Z' },
+  { id: 'm35', direction: 'inbound', body: 'Pero es muy caro para 10 vehículos. No me conviene.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-04-01T11:20:00Z' },
+  { id: 'm36', direction: 'outbound', body: 'Entiendo, podemos ajustar el plan a sus necesidades.', messageType: 'TYPE_WHATSAPP', dateAdded: '2026-04-01T11:25:00Z' },
 ];
 
 // Conversaciones mock representativas para el demo del engine
@@ -109,9 +122,173 @@ function buildMockConversations(): GHLConversationInput[] {
   ];
 }
 
+/**
+ * Ejecuta el pipeline de análisis forense sobre un conjunto de
+ * conversaciones y oportunidades, y devuelve el BatchAnalysisResult.
+ */
+function runForensicsPipeline(
+  conversations: GHLConversationInput[],
+  opps: Array<{
+    id: string;
+    name: string;
+    contactId: string;
+    contactName: string;
+    monetaryValue: number;
+    pipelineId: string;
+    pipelineStageId: string;
+    pipelineStageName: string;
+    status: 'lost';
+    createdAt: string;
+  }>,
+): BatchAnalysisResult {
+  const analyses = conversations.map((conv, i) =>
+    analyzeConversation(conv, opps[i])
+  );
+
+  return generateBatchSummary(analyses, opps[0]?.pipelineId ?? 'unknown', 'Central GPS');
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const mode = searchParams.get('mode') || 'mock';
+
+  // ─── Modo Live: datos reales desde caché (archivo + BD) ───────────────
+
+  if (mode === 'live') {
+    // Fuente 1: caché en sistema de archivos (más rápido, datos frescos del MCP)
+    const cache = readForensicsCache();
+
+    // Fuente 2: base de datos SQLite (persistencia de pipeline runs anteriores)
+    let conversations: GHLConversationInput[];
+    let opps: Array<{
+      id: string; name: string; contactId: string; contactName: string;
+      monetaryValue: number; pipelineId: string; pipelineStageId: string;
+      pipelineStageName: string; status: 'lost'; createdAt: string;
+    }>;
+    let sourceLabel: string;
+    let cacheFetchedAt: string | null = null;
+
+    if (cache && cache.entries.length > 0) {
+      conversations = cache.entries.map((e) => e.conversation);
+      opps = cache.entries.map((e) => ({ ...e.opportunity, status: 'lost' as const }));
+      sourceLabel = cache._meta.source;
+      cacheFetchedAt = cache.fetchedAt;
+    } else {
+      // Fallback: consultar el último pipeline run desde la BD
+      try {
+        const repo = new PipelineRunRepository();
+        const latestBatch = repo.getLatestBatch('MNxYbS1kOg11IiU2QbMv');
+
+        if (!latestBatch || latestBatch.totalAnalyzed === 0) {
+          return NextResponse.json({
+            error: 'No forensics data available. Run a Paperclip heartbeat to populate cache or DB.',
+            hint: 'Execute scripts/build-forensics-cache.ts from a Paperclip agent, or ensure pipeline runs are stored.',
+            _meta: {
+              mode: 'live',
+              cacheAge: getCacheAgeSeconds(),
+              cacheAvailable: false,
+              dbRunAvailable: false,
+            },
+          }, { status: 503 });
+        }
+
+        // Reconstruir entradas mínimas desde el batch analysis
+        conversations = latestBatch.conversations.map((c) => ({
+          id: c.conversationId,
+          contactId: c.contactId,
+          contactName: c.contactName,
+          lastMessageDate: Date.now(),
+          lastMessageType: 'TYPE_SMS',
+          lastMessageDirection: 'inbound' as const,
+          lastMessageBody: '',
+          unreadCount: 0,
+          tags: [],
+        }));
+        opps = latestBatch.conversations.map((c) => ({
+          id: c.opportunityId ?? c.conversationId,
+          name: c.contactName,
+          contactId: c.contactId,
+          contactName: c.contactName,
+          monetaryValue: c.opportunityValue,
+          pipelineId: latestBatch.pipelineId,
+          pipelineStageId: 'lost-stage',
+          pipelineStageName: 'Perdido',
+          status: 'lost' as const,
+          createdAt: latestBatch.analyzedAt,
+        }));
+        sourceLabel = `DB pipeline run (${latestBatch.analyzedAt})`;
+      } catch (dbError) {
+        console.error('[forensics:live] DB fallback failed:', dbError);
+        return NextResponse.json({
+          error: 'Forensics cache is empty and no DB pipeline runs found.',
+          detail: String(dbError),
+          _meta: {
+            mode: 'live',
+            cacheAge: getCacheAgeSeconds(),
+            cacheAvailable: false,
+            dbRunAvailable: false,
+          },
+        }, { status: 503 });
+      }
+    }
+
+    try {
+      const batchResult = runForensicsPipeline(conversations, opps);
+
+      return NextResponse.json({
+        batchResult,
+        _meta: {
+          mode: 'live',
+          analyzedAt: new Date().toISOString(),
+          cacheFetchedAt,
+          cacheAgeSeconds: getCacheAgeSeconds(),
+          conversationCount: conversations.length,
+          source: sourceLabel,
+          note: 'Datos reales desde GHL via Paperclip MCP. Se respalda en archivo JSON y BD SQLite.',
+        },
+      });
+    } catch (error) {
+      console.error('[forensics:live] Error running analysis:', error);
+      return NextResponse.json({
+        error: 'Failed to run analysis on cached data',
+        detail: String(error),
+      }, { status: 500 });
+    }
+  }
+
+  // ─── Modo Stored: último pipeline run desde BD ──────────────────────────
+
+  if (mode === 'stored') {
+    try {
+      const repo = new PipelineRunRepository();
+      const batch = repo.getLatestBatch();
+
+      if (!batch) {
+        return NextResponse.json({
+          error: 'No hay pipeline runs almacenados. Ejecuta la rutina diaria primero.',
+          hint: 'Corre npx tsx scripts/daily-pipeline.ts --mock para generar datos de prueba.',
+          _meta: { mode: 'stored', available: false },
+        }, { status: 404 });
+      }
+
+      return NextResponse.json({
+        batchResult: batch,
+        _meta: {
+          mode: 'stored',
+          analyzedAt: batch.analyzedAt,
+          note: 'Datos del último pipeline run almacenado en BD.',
+        },
+      });
+    } catch (err) {
+      return NextResponse.json({
+        error: 'Error al leer pipeline run de BD',
+        detail: String(err),
+        _meta: { mode: 'stored' },
+      }, { status: 500 });
+    }
+  }
+
+  // ─── Modo Mock: datos predefinidos para desarrollo/demo ───────────────
 
   if (mode === 'mock') {
     const conversations = buildMockConversations();
@@ -128,11 +305,7 @@ export async function GET(request: Request) {
       createdAt: '2026-01-15T00:00:00Z',
     }));
 
-    const analyses = conversations.map((conv, i) =>
-      analyzeConversation(conv, opps[i])
-    );
-
-    const batchResult: BatchAnalysisResult = generateBatchSummary(analyses, 'central-gps', 'Central GPS');
+    const batchResult = runForensicsPipeline(conversations, opps);
 
     return NextResponse.json({
       batchResult,
@@ -140,17 +313,9 @@ export async function GET(request: Request) {
         mode: 'mock',
         analyzedAt: new Date().toISOString(),
         conversationCount: conversations.length,
-        note: 'Mock forense generado dinámicamente por el analysis-engine. Usa ?mode=live en Paperclip para análisis real.',
+        note: 'Mock forense generado dinámicamente por el analysis-engine. Usa ?mode=live para datos reales desde caché.',
       },
     });
-  }
-
-  // Live mode requiere Paperclip runtime
-  if (mode === 'live') {
-    return NextResponse.json({
-      error: 'Live mode requires Paperclip runtime with MCP access',
-      hint: 'Run this from a Paperclip agent heartbeat',
-    }, { status: 501 });
   }
 
   return NextResponse.json({ error: `Unknown mode: ${mode}` }, { status: 400 });

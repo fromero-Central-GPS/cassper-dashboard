@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "sync:pegasus": "tsx scripts/sync-pegasus.ts"
+    "sync:pegasus": "tsx scripts/sync-pegasus.ts",
+    "pipeline:daily": "tsx scripts/daily-pipeline.ts",
+    "pipeline:daily:mock": "tsx scripts/daily-pipeline.ts --mock"
   },
   "dependencies": {
     "better-sqlite3": "^12.11.1",
@@ -23,10 +25,13 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^4.1.9",
+    "@vitest/ui": "^4.1.9",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
     "tsx": "^4.22.4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.9"
   }
 }

@@ -1,0 +1,1633 @@
+{
+  "fetchedAt": "2026-06-22T17:08:47.683Z",
+  "pipelineId": "MNxYbS1kOg11IiU2QbMv",
+  "pipelineName": "Central GPS",
+  "entries": [
+    {
+      "opportunity": {
+        "id": "lrUGnaYUqERhiywPoQ0x",
+        "name": "Sebastián Severino",
+        "contactId": "tUVsPJrFjXGm7yiCGVjp",
+        "contactName": "Sebastián Severino",
+        "monetaryValue": 41116655,
+        "pipelineId": "MNxYbS1kOg11IiU2QbMv",
+        "pipelineStageId": "62d38776-ffcf-42ed-9ae3-95537c8bb3dc",
+        "pipelineStageName": "Demo / Plataforma",
+        "status": "lost",
+        "createdAt": "2025-09-11T15:00:00.000Z"
+      },
+      "conversation": {
+        "id": "1We6qLWV3PVORShy61pw",
+        "contactId": "tUVsPJrFjXGm7yiCGVjp",
+        "contactName": "Sebastián Severino",
+        "email": "sebastian.severino@soser.cl",
+        "phone": "+56953718912",
+        "lastMessageDate": 1776970035000,
+        "lastMessageType": "TYPE_WHATSAPP",
+        "lastMessageDirection": "inbound",
+        "lastMessageBody": "Ya revisamos la propuesta y pues nos ofrecieron bajar al 0,4, asi que eso llevo a la decisión de por lo menos este año tener continuidad con ellos.",
+        "unreadCount": 0,
+        "tags": [
+          "prospecto"
+        ],
+        "messages": [
+          {
+            "id": "JLT8OtsHKL2UHlnTbLvp",
+            "direction": "outbound",
+            "body": "9 am?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-25T13:58:34.234Z"
+          },
+          {
+            "id": "8HrzoziphbeN3AnjS49C",
+            "direction": "inbound",
+            "body": "Perfecto, no hay problema",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-25T14:03:54.500Z"
+          },
+          {
+            "id": "2HuErGWVLIsEE6W9IrGh",
+            "direction": "inbound",
+            "body": "Agendala a mi nombre, ese día voy a estar en bodega para que revisemos en detalle la propuesta. la dirección es San Pablo 9900, Pudahuel.",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-25T14:07:14.290Z"
+          },
+          {
+            "id": "JqAuh3X7CODdx4m7ePru",
+            "direction": "inbound",
+            "body": "Puede ser tipo 8? Los camiones deben salir a ruta y salen entre 8:30 y 9:00AM. no queremos entorpecer el flujo de abastecimiento",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-25T14:29:59.290Z"
+          },
+          {
+            "id": "HwZdfqstT9p9OH5BHVpr",
+            "direction": "inbound",
+            "body": "También la prueba considera el sensor de temperatura? Sería para 1 reefer",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-25T14:55:40.729Z"
+          },
+          {
+            "id": "FNKdZVGYdrfO6lBVJjPC",
+            "direction": "inbound",
+            "body": "Pago único o 0,50 mensual? Dudo mucho que quieran aumentar los costos a lo que estamos pagando actualmente",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-25T15:59:56.012Z"
+          },
+          {
+            "id": "qxY2kVCIUxChh7cv1h7O",
+            "direction": "inbound",
+            "body": "Me dice mi jefe que tiene reunión de gerencia el Martes 😕 en verdad la noticia del gobierno nos pego fuerte así que agendaron de urgencia ese día ¿miércoles a la misma hora?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-25T15:34:23.187Z"
+          },
+          {
+            "id": "HjQQs8ERestotohYW33J",
+            "direction": "inbound",
+            "body": "Hola Francisco buenos días, creo que lo había consultado antes pero tienen sensor de voltaje? Actualmente tenemos el servicio de ese sensor que nos avisa si es que se generan cortes de electricidad o si se apagan los reefers",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-26T13:46:29.156Z"
+          },
+          {
+            "id": "WUQajXwfOjN8AIPkqLQm",
+            "direction": "inbound",
+            "body": "Ok, para que lo consideren el día miércoles",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-26T20:56:53.849Z"
+          },
+          {
+            "id": "GLcm5S2W7We4zbGyhAPt",
+            "direction": "inbound",
+            "body": "Hola Francisco",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-04-01T11:11:54.674Z"
+          },
+          {
+            "id": "F10cpkxlyrmsrb4HPlLq",
+            "direction": "inbound",
+            "body": "Hola Bernardita, bien por acá y tú que tal?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-04-16T15:37:22.780Z"
+          },
+          {
+            "id": "ZZGkjOLuA4l7AuKwJPzH",
+            "direction": "inbound",
+            "body": "Ya revisamos la propuesta y pues nos ofrecieron bajar al 0,4, asi que eso llevo a la decisión de por lo menos este año tener continuidad con ellos. De lo que se reviso con los gerentes, lo que tomo mas peso es la capacidad instalada al día de hoy, porque realizar las coordinaciones entre las zonas y la cantidad de vehículos es demasiado complejo en estas fechas del año.",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-04-16T15:40:20.842Z"
+          },
+          {
+            "id": "u6T77xxj2oydkMnEOgh4",
+            "direction": "outbound",
+            "body": "Claro, entiendo perfectamente.\n\nSi más adelante quisieran reevaluar nuevamente seguimos disponibles.",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-04-16T15:42:14.782Z"
+          }
+        ]
+      }
+    },
+    {
+      "opportunity": {
+        "id": "j1B3CwcRUia9B9yeOnBt",
+        "name": "Jacqueline rent a Car",
+        "contactId": "62EMp70CZ7RtsbAPTNxx",
+        "contactName": "Jacqueline rent a Car",
+        "monetaryValue": 5732302,
+        "pipelineId": "MNxYbS1kOg11IiU2QbMv",
+        "pipelineStageId": "62d38776-ffcf-42ed-9ae3-95537c8bb3dc",
+        "pipelineStageName": "Demo / Plataforma",
+        "status": "lost",
+        "createdAt": "2026-03-02T18:47:09.665Z"
+      },
+      "conversation": {
+        "id": "WUDCCnMnDtaCFupvZ6JF",
+        "contactId": "62EMp70CZ7RtsbAPTNxx",
+        "contactName": "Jacqueline rent a Car",
+        "phone": "+56978622546",
+        "lastMessageDate": 1773068699722,
+        "lastMessageType": "TYPE_WHATSAPP",
+        "lastMessageDirection": "inbound",
+        "lastMessageBody": "Decidimos por otra opción que nos acomoda más.\nAgradezco tu buena disposición.\nSaludos",
+        "unreadCount": 0,
+        "tags": [
+          "prospecto"
+        ],
+        "messages": [
+          {
+            "id": "qQhesnGKVkgX7bjMUHRU",
+            "direction": "inbound",
+            "body": "jACQUELINE",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-02T13:55:36.125Z"
+          },
+          {
+            "id": "WB0VMddmMFP4mw5Bs6Eo",
+            "direction": "inbound",
+            "body": "Necesito saber con que tipo de GPS trabajan, si son los que uno puede instalar o los que van dentro del vehículo?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-02T13:57:00.480Z"
+          },
+          {
+            "id": "HeYizWqsJ8zntGrFnQyL",
+            "direction": "outbound",
+            "body": "Hola Jacqueline! Te acabo de enviar 3 alternativas, todas más o menos dentro del rango de precio conversado",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-02T19:41:54.720Z"
+          },
+          {
+            "id": "OtFKlkmRuyRQWvBuFscE",
+            "direction": "outbound",
+            "body": "Hola Jacqueline, buen día!\n\nTengo disponibilidad hoy a las 16:00 para reunirnos unos minutos online, revisar juntas las distintas propuestas y mostrarte la plataforma, cuéntame si te acomoda 😊",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T13:48:41.233Z"
+          },
+          {
+            "id": "TmmLGIo1rOBH63gSSc8q",
+            "direction": "outbound",
+            "body": "Hola Jacqueline, buenas tardes! \nEstuve revisando y podemos ofrecer un SLA de 48 horas para instalación o desinstalación de GPS en Viña",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-04T16:12:15.075Z"
+          },
+          {
+            "id": "xlMJgfzvCphYCetJgwXk",
+            "direction": "inbound",
+            "body": "Decidimos por otra opción que nos acomoda más.\nAgradezco tu buena disposición.\nSaludos",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-09T13:47:54.334Z"
+          },
+          {
+            "id": "zn6NSFdkRK32wjYBBiz2",
+            "direction": "outbound",
+            "body": "Buen día, Jacqueline. Muchas gracias por tu respuesta.\n\nLes gustaría implementar un demo gratuito para probar el sistema? Así podrán comparar los resultados con el proveedor con el que decidieron contratar",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-09T14:07:43.617Z"
+          },
+          {
+            "id": "GnGs8dzSxC5IvxkZU0aE",
+            "direction": "inbound",
+            "body": "Por ahora no",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-09T14:56:51.846Z"
+          },
+          {
+            "id": "cwcOnxws4rzdY8mxTCZz",
+            "direction": "outbound",
+            "body": "Entiendo, queda extendida la invitación por si más adelante quisieran hacer la prueba.\nTe dejo mi email bcorrea@centralgps.cl y teléfono personal +56952222677.\n\nQue tengas una linda semana, saludos!",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-09T15:04:59.333Z"
+          }
+        ]
+      }
+    },
+    {
+      "opportunity": {
+        "id": "D34CU5fEA5RQvVKKOlFI",
+        "name": "ENCUESTA - EPYSA",
+        "contactId": "X5MwAYj3be0pMD7ynav3",
+        "contactName": "MARITZA ADRIANA GONZALEZ ALBORNOZ",
+        "monetaryValue": 4300000,
+        "pipelineId": "MNxYbS1kOg11IiU2QbMv",
+        "pipelineStageId": "8f1f9bc8-5ee8-428d-a67e-927b853b6d9f",
+        "pipelineStageName": "Demo / Instalado",
+        "status": "lost",
+        "createdAt": "2026-05-11T16:32:08.821Z"
+      },
+      "conversation": {
+        "id": "mZMfu3Zx1sMlizUKZL3j",
+        "contactId": "X5MwAYj3be0pMD7ynav3",
+        "contactName": "MARITZA ADRIANA GONZALEZ ALBORNOZ",
+        "email": "maritza.gonzalez@epysa.cl",
+        "phone": "+56941435410",
+        "lastMessageDate": 1780427956000,
+        "lastMessageType": "TYPE_EMAIL",
+        "lastMessageDirection": "inbound",
+        "lastMessageBody": "Si muy útil, pero por ahora quedo en pausa, sí más adelante lo retoman, lo contactaré.",
+        "unreadCount": 1,
+        "tags": [
+          "10 a 49 vehículos",
+          "prospecto"
+        ],
+        "messages": [
+          {
+            "id": "Iku9eWDEKBXlCN0DiEoj",
+            "direction": "inbound",
+            "body": "Hola quiero cotizar servicio",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-05-11T16:35:24.349Z"
+          },
+          {
+            "id": "Uz8enDlUkuzQyGANcsJs",
+            "direction": "outbound",
+            "body": "Hola, soy *Francisco* de *Central GPS* ¿cómo estás?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-05-11T16:34:08.546Z"
+          },
+          {
+            "id": "RxZMaf45hC2qXRj7g5iU",
+            "direction": "inbound",
+            "body": "Buen día Francisco pueden pasar durante la mañana a instalar la.demo?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-05-12T13:18:37.831Z"
+          },
+          {
+            "id": "DhrviFnB7bjdks8M5uQ6",
+            "direction": "outbound",
+            "body": "Maritza, esta todo listo, Mireya ya se fue..",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-05-12T18:15:43.633Z"
+          },
+          {
+            "id": "iJNrFWQpkMO1733UV4NT",
+            "direction": "outbound",
+            "body": "ahora @Catha te va a coordinar la capacitacion, es una reu de 30 mns",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-05-12T18:16:10.299Z"
+          },
+          {
+            "id": "wzt1Ig2H99FnfwdR97KC",
+            "direction": "outbound",
+            "body": "perfecto, quedo atenta",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-05-12T19:02:39.668Z"
+          },
+          {
+            "id": "vFJDK6ieqLWVJY27SAO4",
+            "direction": "outbound",
+            "body": "Buenas tardes, hablas con Cathalina, le dejo el link para que pueda agendar la capacitación",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-05-12T18:32:12.962Z"
+          },
+          {
+            "id": "itEnCWCNwvQgJ2LEactr",
+            "direction": "inbound",
+            "body": "Hola Francisco, gracias por la cotización. Me interesa cerrar con ustedes, pero necesito tener claridad completa de los costos y condiciones para poder exponer correctamente en la reunión.",
+            "messageType": "TYPE_EMAIL",
+            "dateAdded": "2026-06-02T19:19:34.776Z"
+          },
+          {
+            "id": "BvxKomPlsgks49TMItqb",
+            "direction": "outbound",
+            "body": "Hola Maritza, buenos días 👋 Usted realizó una demo instalada de nuestra plataforma en la flota de Epysa (30 vehículos, Plan Lite). Queremos saber: ¿hay alguna duda técnica o comercial que esté pendiente?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-05-28T18:03:49.545Z"
+          }
+        ]
+      }
+    },
+    {
+      "opportunity": {
+        "id": "q3nuCmgKhbrMSgbM9aXy",
+        "name": "Tamara 🌻",
+        "contactId": "94TdRVCfDMFAQfN84J9Y",
+        "contactName": "Tamara 🌻",
+        "monetaryValue": 2991790,
+        "pipelineId": "MNxYbS1kOg11IiU2QbMv",
+        "pipelineStageId": "62d38776-ffcf-42ed-9ae3-95537c8bb3dc",
+        "pipelineStageName": "Demo / Plataforma",
+        "status": "lost",
+        "createdAt": "2026-02-17T00:00:00.000Z"
+      },
+      "conversation": {
+        "id": "NMlUUBW5eJEboBFKSPR2",
+        "contactId": "94TdRVCfDMFAQfN84J9Y",
+        "contactName": "Tamara 🌻",
+        "email": "tganga@mcnltda.cl",
+        "phone": "+56985029931",
+        "lastMessageDate": 1771852961109,
+        "lastMessageType": "TYPE_WHATSAPP",
+        "lastMessageDirection": "outbound",
+        "lastMessageBody": "Entiendo, de todas maneras, si quisieran probar con nosotros en paralelo podemos hacerlo",
+        "unreadCount": 0,
+        "tags": [
+          "human handover",
+          "prospecto",
+          "calificado"
+        ],
+        "messages": [
+          {
+            "id": "LgyKhpim566HR1km9DZ2",
+            "direction": "outbound",
+            "body": "Mañana AM nos reuniremos con el área de operaciones y los técnicos para analizar los requerimientos específicos del demo y coordinar una visita técnica de evaluación del bus",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T20:25:49.000Z"
+          },
+          {
+            "id": "gN7Eu2rv0FPXErIegM4r",
+            "direction": "outbound",
+            "body": "Tenemos disponibilidad para el viernes a las 12:30 😀 por favor cuéntame si les acomoda el horario",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T20:37:32.000Z"
+          },
+          {
+            "id": "AFAXbEhqeTdyEGuUulwX",
+            "direction": "inbound",
+            "body": "ok, entonces instalariamos el viernes cierto?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T20:44:29.368Z"
+          },
+          {
+            "id": "jK4SFZgb2sUof2dgHECN",
+            "direction": "inbound",
+            "body": "resumen , mañana nos reunimos para prepáranos e instalar el viernes 20 a las 12.30",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T20:49:36.537Z"
+          },
+          {
+            "id": "CfB3jsxK28XQcW0LDrSj",
+            "direction": "inbound",
+            "body": "ok ojala el viernes, necesitamos pronto la instalacion. gracias",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T21:01:31.593Z"
+          },
+          {
+            "id": "Gjx0f0j5wrRR0C5rKsPg",
+            "direction": "inbound",
+            "body": "hola buen día Bernardita, comento que finalmente optamos por otra propuesta de camaras",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-23T13:19:29.650Z"
+          },
+          {
+            "id": "wirNrlEAUSMr8ddwP6sa",
+            "direction": "inbound",
+            "body": "Además, la otra opción nos arrendo las cámaras, entonces bajo considerablemente la cotizacion",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-23T13:22:07.970Z"
+          },
+          {
+            "id": "Dc8gbf5rhU2iZLv7tHYT",
+            "direction": "outbound",
+            "body": "Entiendo, de todas maneras, si quisieran probar con nosotros en paralelo podemos hacerlo",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-23T13:22:40.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "opportunity": {
+        "id": "eTxU0ePqWj9IBrPFxze0",
+        "name": "Jorge Departamento De TI",
+        "contactId": "W6TTaXDqkngxPIThYVqR",
+        "contactName": "Jorge Departamento De TI",
+        "monetaryValue": 1431646,
+        "pipelineId": "MNxYbS1kOg11IiU2QbMv",
+        "pipelineStageId": "dc05554e-7ed7-47d0-bb07-90d8fe1c829a",
+        "pipelineStageName": "Calificado",
+        "status": "lost",
+        "createdAt": "2026-02-24T20:18:18.990Z"
+      },
+      "conversation": {
+        "id": "qzMCox9EUytxKqx0M20H",
+        "contactId": "W6TTaXDqkngxPIThYVqR",
+        "contactName": "Jorge Departamento De TI",
+        "email": "jorge.munoz@corachi.cl",
+        "phone": "+56934544274",
+        "lastMessageDate": 1772197514480,
+        "lastMessageType": "TYPE_WHATSAPP",
+        "lastMessageDirection": "outbound",
+        "lastMessageBody": "Perfecto, quedo atenta!",
+        "unreadCount": 0,
+        "tags": [
+          "prospecto",
+          "calificado"
+        ],
+        "messages": [
+          {
+            "id": "Umto3V44Rit9TF02O6BM",
+            "direction": "inbound",
+            "body": "gps",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-24T19:53:35.062Z"
+          },
+          {
+            "id": "UI3kOaVcIEWLlIUryNBf",
+            "direction": "inbound",
+            "body": "tengo esta propuesta masomenos",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-24T19:53:39.766Z"
+          },
+          {
+            "id": "1bqtkiTmgvoAjfuAbrFe",
+            "direction": "inbound",
+            "body": "vale, me podrías mandar todos los planes que tengan disponibles asi para poder decidir ?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-24T19:56:11.392Z"
+          },
+          {
+            "id": "4mHWOzxQUQcYlojKRzFS",
+            "direction": "outbound",
+            "body": "Jorge, te acabo de enviar la cotización por planes anuales. \n\nAl hacer la evaluación de riesgo notamos que hay deudas pendientes, por política interna no te puedo ofrecer plan mensual. Te dejo el documento de Equifax",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-24T20:34:32.000Z"
+          },
+          {
+            "id": "6Lkzub6TCtdtzGdqRoYz",
+            "direction": "inbound",
+            "body": "deudas de la empresa en otros lados?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-24T20:36:39.363Z"
+          },
+          {
+            "id": "DDth5iYpdTRvva1bCA1B",
+            "direction": "outbound",
+            "body": "El plan anual es más económico porque solo se consideran 10 meses de servicio en el cobro",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-24T20:35:52.000Z"
+          },
+          {
+            "id": "qwCht5R10aH2HpH8OtQ7",
+            "direction": "inbound",
+            "body": "vale comprendo entonces al tener deuda en ese docuemnto equifax que cambia?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-24T20:56:23.594Z"
+          },
+          {
+            "id": "Ckmurh12iehls2hPB2pu",
+            "direction": "outbound",
+            "body": "Pudiste ver la cotización que te envié? \nTe propongo que nos reunamos 10 minutos online para mostrarte la plataforma y aclarar dudas, tengo disponibilidad a las 11:20, te acomoda?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-27T12:58:06.137Z"
+          },
+          {
+            "id": "DRtlhBhfNQtcqXVmqufT",
+            "direction": "inbound",
+            "body": "si lo estoy revisando te aviso cuando tenga novedades",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-27T13:02:50.063Z"
+          },
+          {
+            "id": "FFniWK8brLGN24O5JcZj",
+            "direction": "outbound",
+            "body": "Perfecto, quedo atenta!",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-27T13:05:14.086Z"
+          }
+        ]
+      }
+    },
+    {
+      "opportunity": {
+        "id": "1K57AdV5yqqRavLoOpMn",
+        "name": "Osvaldo Cadiz",
+        "contactId": "YkgzW0pN7z0MLX0tF81j",
+        "contactName": "Osvaldo Cadiz",
+        "monetaryValue": 1194230,
+        "pipelineId": "MNxYbS1kOg11IiU2QbMv",
+        "pipelineStageId": "62d38776-ffcf-42ed-9ae3-95537c8bb3dc",
+        "pipelineStageName": "Demo / Plataforma",
+        "status": "lost",
+        "createdAt": "2026-03-04T15:26:01.826Z"
+      },
+      "conversation": {
+        "id": "5lJqVOUU4t6wk25rcYEh",
+        "contactId": "YkgzW0pN7z0MLX0tF81j",
+        "contactName": "Osvaldo Cadiz",
+        "email": "osvaldo.cadiz@movecar.pro",
+        "phone": "+56935967655",
+        "lastMessageDate": 1775749281615,
+        "lastMessageType": "TYPE_WHATSAPP",
+        "lastMessageDirection": "outbound",
+        "lastMessageBody": "Gracias 😀",
+        "unreadCount": 0,
+        "messages": [
+          {
+            "id": "nRlzG1jX0W3ULOVlCXBx",
+            "direction": "inbound",
+            "body": "Buenas tardes,\n\nSoy Osvaldo Cádiz de MOVECAR.\n\nSomos una empresa de arriendo de vehículos y estamos iniciando operación con una flota de 5 vehículos, con proyección de crecimiento a 20 hacia fin de año y aproximadamente 100 el próximo año.\n\nQuisiera solicitar cotización para:\n• Plataforma de gestión de flota\n• GPS con telemetría en tiempo real\n• Dashboard con KPIs operativos\n• Integración tecnológica con sistema propio\n\nQuedo atento a la información y a coordinar una reunión si es necesario.\n\nMuchas gracias.",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:22:26.309Z"
+          },
+          {
+            "id": "6dwRSQsWArFhbl1rgnrT",
+            "direction": "outbound",
+            "body": "te estoy transfiriendo con Bernardita que te ayudará con la cotización",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:22:42.299Z"
+          },
+          {
+            "id": "EfdJbGeInrVI0ykS5k6d",
+            "direction": "inbound",
+            "body": "ok gracias",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:23:13.680Z"
+          },
+          {
+            "id": "jZELa8KEW4fCCy4Iuwxu",
+            "direction": "outbound",
+            "body": "Hola, Osvaldo, cómo estás? Hablas con Bernardita",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:32:02.605Z"
+          },
+          {
+            "id": "cgouBavhxUpyjPQmQEO0",
+            "direction": "inbound",
+            "body": "Bien gracias\nOk",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:38:01.424Z"
+          },
+          {
+            "id": "i08gGu0SZTvV6pH5NC6C",
+            "direction": "outbound",
+            "body": "Perfecto, nuestro plan Pro cumple con tus requerimientos: \n\n- Plataforma y app móvil para monitoreo y gestión de flota\n- GPS con telemetría en tiempo real\n- Dashboard con métricas de conducción (acá te preguntaría qué KPIs necesitan)\n- Integraciones incluidas, sin costo en caso de tener que desarrollar",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:42:11.888Z"
+          },
+          {
+            "id": "AX0E5HV5P7jxVJE2MWTz",
+            "direction": "outbound",
+            "body": "Te parece si nos reunimos 15 minutos para que me cuentes un poco más sobre lo que andas buscando y mostrarte la plataforma? Tengo disponibilidad mañana a las 12:30, te acomoda?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:43:48.857Z"
+          },
+          {
+            "id": "jYe9tv1pDLVlBPg23ZgL",
+            "direction": "inbound",
+            "body": "ok, enviame cita  osvaldo.cadiz@movecar.pro\nGracias",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:52:37.910Z"
+          },
+          {
+            "id": "eGxx2K9B5Shsr08zcjdn",
+            "direction": "outbound",
+            "body": "Agendo la reunión para mañana a las 12:30 online?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:54:39.176Z"
+          },
+          {
+            "id": "4rixB9k5U6vD5udnqUPK",
+            "direction": "outbound",
+            "body": "Por mientras te adelanto que el valor del plan es de 0,5 UF + IVA mensual por vehículo, incluyendo el GPS en comodato",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:55:18.820Z"
+          },
+          {
+            "id": "mPSxxW8uvTnGh3oRFr2S",
+            "direction": "outbound",
+            "body": "Dónde están ubicados los vehículos?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:55:31.694Z"
+          },
+          {
+            "id": "uohPr2UaY46cgB5BA9Gt",
+            "direction": "outbound",
+            "body": "Disculpa, leí mal tu mensaje. Acabo de enviar la invitación a tu email osvaldo.cadiz@movecar.pro",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T18:59:21.724Z"
+          },
+          {
+            "id": "QEtVURRuUxZlV6VMZ0Ea",
+            "direction": "inbound",
+            "body": "Si por favor",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T19:08:59.305Z"
+          },
+          {
+            "id": "6hWjqBAfqNVHlx7Lhhx7",
+            "direction": "inbound",
+            "body": "Ok nos vemos mañana",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T19:09:07.438Z"
+          },
+          {
+            "id": "iVjtePxiJ7j6SymUWPzJ",
+            "direction": "outbound",
+            "body": "Nos vemos mañana, saludos!",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T19:50:57.926Z"
+          },
+          {
+            "id": "2MFR1FmahzaRyOgILPOw",
+            "direction": "inbound",
+            "body": "👍🏻",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-03-03T19:51:18.573Z"
+          },
+          {
+            "id": "IyQoiW0O0uNoh30F1ueQ",
+            "direction": "outbound",
+            "body": "Hola, cómo estás?\n\nHablas con Bernardita de Central GPS 😊",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-04-09T15:26:23.620Z"
+          },
+          {
+            "id": "TGWJDFpVgV5I9PUCSr6C",
+            "direction": "outbound",
+            "body": "Buen día, Osvaldo, espero que esté todo bien.\n\nTe escribo para saber si has tenido tiempo de revisar nuestra propuesta",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-04-09T15:37:14.007Z"
+          },
+          {
+            "id": "MrmYmFJizQAhZH3MyFyr",
+            "direction": "inbound",
+            "body": "Hola Bernardita! 😊\nSí, estuve revisando la propuesta, muchas gracias por el envío.\nTodavía estoy en proceso de decisión con otros proveedores, así que debería estar definiendo durante este mes o a principios del próximo.\nApenas tenga novedades te aviso.\nGracias",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-04-09T15:39:14.562Z"
+          },
+          {
+            "id": "XNo0PRUGkpSouXEV7FmX",
+            "direction": "outbound",
+            "body": "Perfecto, muchas gracias!\nQue tengas un buen día, saludos 😊",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-04-09T15:40:02.359Z"
+          },
+          {
+            "id": "8TUFVx0h8BAIt1ggObgN",
+            "direction": "inbound",
+            "body": "Igual tu!!!",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-04-09T15:40:20.833Z"
+          },
+          {
+            "id": "o7LwjOH4TN11l4NsUiSe",
+            "direction": "outbound",
+            "body": "Gracias 😀",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-04-09T15:41:21.615Z"
+          }
+        ]
+      }
+    },
+    {
+      "opportunity": {
+        "id": "v9vWkigwRRLkk8tAQmUR",
+        "name": "Jorge Caverlotti",
+        "contactId": "E1U52tMIfLufWok91sZg",
+        "contactName": "Jorge Caverlotti",
+        "monetaryValue": 2160095,
+        "pipelineId": "MNxYbS1kOg11IiU2QbMv",
+        "pipelineStageId": "dc05554e-7ed7-47d0-bb07-90d8fe1c829a",
+        "pipelineStageName": "Calificado",
+        "status": "lost",
+        "createdAt": "2026-01-16T18:12:11.939Z"
+      },
+      "conversation": {
+        "id": "m1Zwbxv583C79blgMpwd",
+        "contactId": "E1U52tMIfLufWok91sZg",
+        "contactName": "Jorge Caverlotti",
+        "email": "jorgesoho_22@hotmail.com",
+        "phone": "+56937233813",
+        "lastMessageDate": 1770655853000,
+        "lastMessageType": "TYPE_WHATSAPP",
+        "lastMessageDirection": "outbound",
+        "lastMessageBody": "Podemos reunirnos 20 minutos online para aclarar dudas y mostrarte cómo funciona nuestro sistema",
+        "unreadCount": 0,
+        "messages": [
+          {
+            "id": "da5cFLn1iGkJdSYICjN2",
+            "direction": "inbound",
+            "body": "Menos",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:09:30.580Z"
+          },
+          {
+            "id": "qAPaVO954IK3GNyoZ8Ck",
+            "direction": "inbound",
+            "body": "De una semaba",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:09:33.274Z"
+          },
+          {
+            "id": "2tQDrx6Ba7aUeMEZMhd6",
+            "direction": "inbound",
+            "body": "A lo mas 2 dias",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:09:40.057Z"
+          },
+          {
+            "id": "odco3fF2Zzji9q4A30PN",
+            "direction": "outbound",
+            "body": "Perfecto, 2 días. Cuántas horas diarias están encendidos los buses?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:10:24.000Z"
+          },
+          {
+            "id": "bA0HoqckHJBlDggG3nGV",
+            "direction": "outbound",
+            "body": "Perfecto, muchas gracias por la información",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:23:02.000Z"
+          },
+          {
+            "id": "LQeiVEbkJSpkmxm8sbJI",
+            "direction": "outbound",
+            "body": "De todas maneras podemos ayudarte, nuestro plan de VSS (para monitoreo en tiempo real de las cámaras) funciona super bien, sin desfaces o intermitencias en la transmisión",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:25:30.000Z"
+          },
+          {
+            "id": "6emyV9mV0h26kOfYJdcl",
+            "direction": "outbound",
+            "body": "Me podrías comentar dónde están ubicados tus buses, por favor?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:25:49.000Z"
+          },
+          {
+            "id": "Hs6QYtEOG5l0cYCRHfJA",
+            "direction": "inbound",
+            "body": "Stgo",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:26:11.717Z"
+          },
+          {
+            "id": "yIOkQygS8rQoJV3w0fmN",
+            "direction": "outbound",
+            "body": "Perfecto, la instalación en la región Metropolitana es gratuita",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:26:46.000Z"
+          },
+          {
+            "id": "APXcfb20wug7mmvZDB5D",
+            "direction": "outbound",
+            "body": "Quieres que te envíe una cotización solo considerando una cámara? (cabina de conductor)",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:27:19.000Z"
+          },
+          {
+            "id": "qQoWyzcoFSRu2luX5F2h",
+            "direction": "inbound",
+            "body": "Si",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:27:30.668Z"
+          },
+          {
+            "id": "zrFPAwhmQtnJ6mdK0bjl",
+            "direction": "outbound",
+            "body": "Perfecto, te envío la información dentro de la tarde.\n\nPor mientras te adelanto que el plan de VSS tiene el valor de 0,99 + IVA por vehículo mensual",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:28:35.000Z"
+          },
+          {
+            "id": "xooakZWqC6gDF20AAjEt",
+            "direction": "inbound",
+            "body": "Cuanto",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:29:08.478Z"
+          },
+          {
+            "id": "Ny14ZgOI6KYD6EgjlgMp",
+            "direction": "inbound",
+            "body": "Es eso",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:29:11.460Z"
+          },
+          {
+            "id": "6RpcV5KpPjln02Zz2Gsf",
+            "direction": "outbound",
+            "body": "Según el valor de la UF de hoy son 46.668 por vehículo mensual",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:34:27.000Z"
+          },
+          {
+            "id": "tAauozVfPa8DymKHR8WR",
+            "direction": "inbound",
+            "body": "Mas iva",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:34:49.342Z"
+          },
+          {
+            "id": "m3cOZlq6iWcrft6F5huV",
+            "direction": "inbound",
+            "body": "Osea es el arriendo del equipo sale eso",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:35:13.094Z"
+          },
+          {
+            "id": "HzaMkc94S692imf22ZTB",
+            "direction": "outbound",
+            "body": "Este valor incluye el IVA",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:35:37.000Z"
+          },
+          {
+            "id": "8J0l7gGsD4EMYzxZz0ID",
+            "direction": "outbound",
+            "body": "Ese valor es el valor del plan mensual que permite la transmisión en tiempo real",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:36:36.000Z"
+          },
+          {
+            "id": "E82seQHp1RQiI31HFYS4",
+            "direction": "inbound",
+            "body": "Esta un poco alta",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:37:46.346Z"
+          },
+          {
+            "id": "QJLJPRBbnd88lKjHDQHj",
+            "direction": "inbound",
+            "body": "En comparación a otras empresas",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:37:55.970Z"
+          },
+          {
+            "id": "IfVzf2qCkhSXzL3cXsN2",
+            "direction": "outbound",
+            "body": "Entiendo que en comparación a otras empresas pueda ser elevado, pero la calidad de la transmisión, los planes de conectividad que utilizamos y la plataforma son los mejores del mercado",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:41:06.000Z"
+          },
+          {
+            "id": "8Mp4HeDs3v469wqFjbP3",
+            "direction": "inbound",
+            "body": "K empresa de telecomunicaciones",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:43:02.867Z"
+          },
+          {
+            "id": "He2V0qRYGvpoaFbi4RRs",
+            "direction": "inbound",
+            "body": "Es",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T18:43:03.535Z"
+          },
+          {
+            "id": "RoExDJR6hRyxYK28lMmE",
+            "direction": "outbound",
+            "body": "Dame un momento, por favor",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T20:13:55.000Z"
+          },
+          {
+            "id": "zQ8cAMPF2wT2TlO6pbQw",
+            "direction": "outbound",
+            "body": "Trabajamos con Entel, que es la compañía con mejor conectividad a lo largo de Chile y especialmente en la región Metropolitana",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T20:21:00.000Z"
+          },
+          {
+            "id": "Ibz3LkabsK7F9rms96nj",
+            "direction": "inbound",
+            "body": "Bueno te aviso cualquier novedad igual estoy cotizando en otras empresas",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T20:21:56.562Z"
+          },
+          {
+            "id": "Fu3ewYEQbGITnD0rHbRF",
+            "direction": "inbound",
+            "body": "Tiempo mínimo de contrato cuanto es",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T20:22:39.825Z"
+          },
+          {
+            "id": "712QAk4NVtXrp9hPHgsm",
+            "direction": "inbound",
+            "body": "O en cualquier momento se puede dar de bajs",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T20:22:54.490Z"
+          },
+          {
+            "id": "nYV6V4PZyRPpsE6FN7z1",
+            "direction": "inbound",
+            "body": "El servicio",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T20:23:02.630Z"
+          },
+          {
+            "id": "jvsQHeibT9xSbRfJT7N0",
+            "direction": "outbound",
+            "body": "El contrato es anual, pero puedes darlo de baja en el momento que estimes conveniente avisando con 30 días de anticipación",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-16T20:26:18.000Z"
+          },
+          {
+            "id": "2dxn3Q0jpAOxmeN6VtJz",
+            "direction": "outbound",
+            "body": "Hola, cómo estás?\n\nHablas con Bernardita de Central GPS 😊",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-19T19:19:34.000Z"
+          },
+          {
+            "id": "kcRHNiWz5FXJoZvuPljn",
+            "direction": "outbound",
+            "body": "Hola, somos el equipo de Central GPS\n\nHablas con Berna, ¿cómo estás?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-09T16:22:49.000Z"
+          },
+          {
+            "id": "N4hiuATlPl3N5Wwxv3eK",
+            "direction": "inbound",
+            "body": "Hola",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-09T16:37:50.014Z"
+          },
+          {
+            "id": "9TdQuq4vX7ZqhMBnPxN8",
+            "direction": "inbound",
+            "body": "Cuenteme",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-09T16:37:53.125Z"
+          },
+          {
+            "id": "dcSMxlZvUUXDLAVEdYMo",
+            "direction": "outbound",
+            "body": "Buenas tardes, Jorge. Te escribo para saber si pudiste revisar la cotización por las cámaras?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-09T16:49:12.000Z"
+          },
+          {
+            "id": "An3InC9pDmOYJeL4TOmO",
+            "direction": "outbound",
+            "body": "Podemos reunirnos 20 minutos online para aclarar dudas y mostrarte cómo funciona nuestro sistema",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-09T16:50:53.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "opportunity": {
+        "id": "mvfGHWB5y2YLiGXMclFT",
+        "name": "Victor Fuentes",
+        "contactId": "AUtQILGfUoF2bP2H32sY",
+        "contactName": "Victor Fuentes",
+        "monetaryValue": 1906383,
+        "pipelineId": "MNxYbS1kOg11IiU2QbMv",
+        "pipelineStageId": "dc05554e-7ed7-47d0-bb07-90d8fe1c829a",
+        "pipelineStageName": "Calificado",
+        "status": "lost",
+        "createdAt": "2026-01-23T14:20:00.454Z"
+      },
+      "conversation": {
+        "id": "ROJr1jrZe9nhVHQyXokA",
+        "contactId": "AUtQILGfUoF2bP2H32sY",
+        "contactName": "Victor Fuentes",
+        "email": "vfuentes@riaaustral.com",
+        "phone": "+56997485566",
+        "lastMessageDate": 1770206889000,
+        "lastMessageType": "TYPE_WHATSAPP",
+        "lastMessageDirection": "outbound",
+        "lastMessageBody": "Hola, somos el equipo de Central GPS\nHablas con Berna, ¿cómo estás?",
+        "unreadCount": 0,
+        "messages": [
+          {
+            "id": "lshNwv6TIL3l2oLLLdrW",
+            "direction": "inbound",
+            "body": "Hola, quiero más información del servicio",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:39:22.892Z"
+          },
+          {
+            "id": "2H4xvBVgSmnyktc7joh4",
+            "direction": "outbound",
+            "body": "Perfecto. Central GPS ofrece monitoreo en tiempo real de vehículos, integración con sistemas logísticos y reportes personalizados. ¿Te interesa para flota, vehículo particular o cámaras?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:39:35.000Z"
+          },
+          {
+            "id": "oziEXN2FiEOzHvHHZRj0",
+            "direction": "inbound",
+            "body": "me gustaría saber los valores",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:39:38.303Z"
+          },
+          {
+            "id": "alagSDI5jSALSsAgG6lF",
+            "direction": "outbound",
+            "body": "Claro. Para entregarte los valores exactos, ¿me puedes indicar cuántos vehículos necesitas monitorear, en qué comuna están y para qué necesitas el servicio? Así te envío la cotización adecuada.",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:39:51.000Z"
+          },
+          {
+            "id": "ckufMSa9oBbbXnC8aPs9",
+            "direction": "inbound",
+            "body": "son 6 camionetas y dos furgones",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:40:24.487Z"
+          },
+          {
+            "id": "2eFnl6VBp6RFZiyUKxac",
+            "direction": "outbound",
+            "body": "Gracias por el detalle. ¿En qué comuna están ubicadas las camionetas y furgones? Además, ¿qué problema necesitas resolver con el GPS? Así te envío la propuesta adecuada.",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:40:35.000Z"
+          },
+          {
+            "id": "itSNYAiLpGhoYHW2WE1H",
+            "direction": "inbound",
+            "body": "estamos ubicados en llanquihue",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:41:06.705Z"
+          },
+          {
+            "id": "Piquagc5vdGonvo9dRgp",
+            "direction": "outbound",
+            "body": "Entendido, están en Llanquihue. ¿Me puedes contar qué problema necesitas resolver con el GPS? Así te envío la propuesta más adecuada para tu flota.",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:41:16.000Z"
+          },
+          {
+            "id": "Gqc86GyIx2deC6c4AheW",
+            "direction": "inbound",
+            "body": "necsito saber  los recorridos",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:41:58.105Z"
+          },
+          {
+            "id": "3bQ2LZNJIXA4ILokCJW1",
+            "direction": "outbound",
+            "body": "Con Central GPS puedes monitorear en tiempo real los recorridos de tus vehículos, ver rutas, trayectos y acceder a reportes detallados desde la plataforma web o app.",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:42:09.000Z"
+          },
+          {
+            "id": "l1f3dynk0NoYByzzrKwl",
+            "direction": "inbound",
+            "body": "perfecto",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:42:26.537Z"
+          },
+          {
+            "id": "qKNEUha5QkT5mAzJ5lol",
+            "direction": "outbound",
+            "body": "Perfecto. Para enviarte una cotización formal, ¿me puedes indicar el RUT de la empresa y un correo electrónico de contacto? Así te hago llegar toda la información detallada.",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:42:36.000Z"
+          },
+          {
+            "id": "LuK4dm9qU7gUYsKJUmJ4",
+            "direction": "inbound",
+            "body": "me gustaria hablar con un ejecutivo",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:43:13.476Z"
+          },
+          {
+            "id": "ebw8EPL2twLMchR5ghMK",
+            "direction": "outbound",
+            "body": "Te estoy transfiriendo con Sandra que te ayudará con la cotización",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:43:25.000Z"
+          },
+          {
+            "id": "NmAhMMZE1KW1IRZXZQ5D",
+            "direction": "outbound",
+            "body": "Hola, Víctor, cómo estás? Hablas con Bernardita",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:49:41.000Z"
+          },
+          {
+            "id": "bHV7NWFxaxL4liAi19Or",
+            "direction": "outbound",
+            "body": "Te parece bien que hablemos por acá o prefieres que te llame?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:50:12.000Z"
+          },
+          {
+            "id": "eWYfBD2ZUP29Z8ZcYmwV",
+            "direction": "inbound",
+            "body": "mejor que me llame",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:54:59.827Z"
+          },
+          {
+            "id": "W796URNhYsVem0N246ZW",
+            "direction": "outbound",
+            "body": "Perfecto, por favor dame unos 10 minutos y te llamo",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:56:35.000Z"
+          },
+          {
+            "id": "dog4w531DCN5bNg7ZAPA",
+            "direction": "inbound",
+            "body": "ok",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T13:57:58.791Z"
+          },
+          {
+            "id": "o1K0c5zl9yZchgBjGGWJ",
+            "direction": "outbound",
+            "body": "Víctor te voy a llamar ahora desde el número +56952222677",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T14:18:26.000Z"
+          },
+          {
+            "id": "MRLeicnuVMwLO94rXRRP",
+            "direction": "inbound",
+            "body": "Un minuto porfa",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T14:18:53.443Z"
+          },
+          {
+            "id": "attCNpOCIiak3Umnq8hy",
+            "direction": "outbound",
+            "body": "Claro, avísame cuando puedas hablar y te llamo",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T14:19:07.000Z"
+          },
+          {
+            "id": "vJZ1ihAlSZ5Yl3iC47Xi",
+            "direction": "inbound",
+            "body": "Razón Social RiaAustral\nGiro Venta de productos de mar\nRut 77381500-3\nf/c 997485566\ndirección Avn Vicente Perez Rosales 713, Llanquigue",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T15:31:17.765Z"
+          },
+          {
+            "id": "F6wJNK9kS1WkCx73ZvNA",
+            "direction": "outbound",
+            "body": "Muchas gracias, te cuento cuando tenga toda la información por mi lado",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-23T16:11:27.000Z"
+          },
+          {
+            "id": "ZjhEyjS8koA84hHB7ZVX",
+            "direction": "outbound",
+            "body": "Hola, cómo estás?\n\nHablas con Bernardita de Central GPS 😊",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-01-29T16:30:02.000Z"
+          },
+          {
+            "id": "GHjz4bo5yYAJHQiINWPj",
+            "direction": "outbound",
+            "body": "Hola, somos el equipo de Central GPS\nHablas con Berna, ¿cómo estás?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-04T12:08:09.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "opportunity": {
+        "id": "mQuc4mAdc9Y5zU4DTZ7q",
+        "name": "Sebastian Quiroga Transworld",
+        "contactId": "KmKV7smlfOV01rnwmgCe",
+        "contactName": "Sebastian Quiroga Transworld",
+        "monetaryValue": 1200000,
+        "pipelineId": "MNxYbS1kOg11IiU2QbMv",
+        "pipelineStageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+        "pipelineStageName": "Perdido",
+        "status": "lost",
+        "createdAt": "2025-12-16T14:22:40.967Z"
+      },
+      "conversation": {
+        "id": "lGOFuAGluXgOYRPi0wTP",
+        "contactId": "KmKV7smlfOV01rnwmgCe",
+        "contactName": "Sebastian Quiroga Transworld",
+        "email": "squiroga@transworld.cl",
+        "phone": "+56961925635",
+        "lastMessageDate": 1762977984462,
+        "lastMessageType": "TYPE_WHATSAPP",
+        "lastMessageDirection": "inbound",
+        "lastMessageBody": "Perfecto, muchas gracias",
+        "unreadCount": 0,
+        "messages": [
+          {
+            "id": "5qYoAuIgTNMVKHvkfNlI",
+            "direction": "inbound",
+            "body": "Hola buenas tardes",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:16:29.799Z"
+          },
+          {
+            "id": "0vHsdHqKEUpPW2IXC96i",
+            "direction": "outbound",
+            "body": "¡Hola! 👋 Bienvenido a Central GPS. Hablas con Alicia, cuéntame cómo te puedo ayudar?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:16:44.000Z"
+          },
+          {
+            "id": "cTufKF9vo6IsBiKPA7Qm",
+            "direction": "inbound",
+            "body": "Me gustaria saber el costo de instalación de cámaras Dashcam",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:17:34.292Z"
+          },
+          {
+            "id": "32OU5zqACrbZgQin5UlJ",
+            "direction": "outbound",
+            "body": "El costo de instalación de cámaras Dashcam depende del tipo de vehículo y la cantidad de cámaras. ¿A qué tipo de vehículo quieres instalarle la cámara?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:17:51.000Z"
+          },
+          {
+            "id": "gcAyvyPDPcFilALHQgNR",
+            "direction": "inbound",
+            "body": "Maxus eDeliver 3\nChevrolet Isuzu NPR 816",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:21:12.266Z"
+          },
+          {
+            "id": "mEshsdECZpUjdPfy0Yo7",
+            "direction": "inbound",
+            "body": "Son solo dos vehiculos",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:21:24.984Z"
+          },
+          {
+            "id": "601mMQQ5NioRggPj1t3c",
+            "direction": "outbound",
+            "body": "Perfecto, ¿qué te gustaría grabar con las cámaras? Por ejemplo, la cabina, el frente o la carga. Así te puedo orientar mejor con la cotización.",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:21:42.000Z"
+          },
+          {
+            "id": "yffp5IxfCqUBaA0KFjlt",
+            "direction": "inbound",
+            "body": "Idealmente cabina y al exterior del vehiculo (Frente)",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:22:45.412Z"
+          },
+          {
+            "id": "lqxsL65iHM2m5EalqD89",
+            "direction": "inbound",
+            "body": "O solo al frente",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:22:51.950Z"
+          },
+          {
+            "id": "CySTpY57q5oZWXpg2Kmq",
+            "direction": "outbound",
+            "body": "Entiendo, puedes instalar cámaras para grabar la cabina y el frente, o solo el frente. ¿Cuánto tiempo te gustaría guardar los videos?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:23:08.000Z"
+          },
+          {
+            "id": "Hvdo4aIy9VE1sOZ2OKS8",
+            "direction": "inbound",
+            "body": "Cuanto es el tiempo que uds me recomiendan?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:23:58.370Z"
+          },
+          {
+            "id": "tUIgM6rMzO9imUE4fxti",
+            "direction": "outbound",
+            "body": "Lo más recomendado es guardar los videos entre 7 y 30 días, dependiendo del uso y la rotación de los vehículos. ¿Te gustaría cotizar para 7, 15 o 30 días de almacenamiento?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:24:16.000Z"
+          },
+          {
+            "id": "sJL0WMDejlGJdJigGcuu",
+            "direction": "inbound",
+            "body": "Para 15 dias por favor",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:26:36.215Z"
+          },
+          {
+            "id": "umwcyRmksgbVLUwcpFS8",
+            "direction": "outbound",
+            "body": "Perfecto, te cotizaré para 15 días de almacenamiento de video. ¿Me puedes indicar el RUT de la empresa y un correo electrónico para enviarte la cotización formal?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:26:55.000Z"
+          },
+          {
+            "id": "Xe2HfAIc7u8zSrmBMB2A",
+            "direction": "inbound",
+            "body": "96.755.110-4 / squiroga@transworld.cl",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:27:35.516Z"
+          },
+          {
+            "id": "ItOhnsAo4d1MBtax1qHa",
+            "direction": "outbound",
+            "body": "Te estoy transfiriendo con Sandra que te ayudará con la cotización",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:27:59.000Z"
+          },
+          {
+            "id": "228WvOD11lQKGx08AMFB",
+            "direction": "inbound",
+            "body": "Perfecto, gracias",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:28:23.850Z"
+          },
+          {
+            "id": "gRQYrtL3hxbwqGaHkOY2",
+            "direction": "outbound",
+            "body": "Hola Sebastián en que comuna necesitas instalar?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:43:50.000Z"
+          },
+          {
+            "id": "bF6E8ATzg3Y9a1cS7soC",
+            "direction": "inbound",
+            "body": "Hola, en Huechuraba",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:44:20.072Z"
+          },
+          {
+            "id": "6gxcjX8fZQinI5YkW9vE",
+            "direction": "outbound",
+            "body": "te envié cotizacion Plan Monitoreo Anual",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:51:13.000Z"
+          },
+          {
+            "id": "KsmGmvVzDanZeeP2pvpD",
+            "direction": "inbound",
+            "body": "Perfecto, muchas gracias",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:54:31.667Z"
+          },
+          {
+            "id": "cpLC8hFsyZPGLxtVRyXM",
+            "direction": "inbound",
+            "body": "Consulta, realizan venta del dispositivo mas instalación?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:58:00.983Z"
+          },
+          {
+            "id": "j3PyFH6VbeJdLfk0hwuO",
+            "direction": "outbound",
+            "body": "si la cámara es en venta",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T19:59:05.000Z"
+          },
+          {
+            "id": "MLgpw0v0KzqF6qRmK08r",
+            "direction": "inbound",
+            "body": "Y podría eventualmente solo comprar la cámara y además con Uds realizar la instalación?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T20:00:02.859Z"
+          },
+          {
+            "id": "E9n2LWTytIOwMjHGqkbK",
+            "direction": "outbound",
+            "body": "primero debemos realizar una visita de diagnostico para evaluar la instalación y se determina el cobro normalmente se cobra 1 uf por vehículo",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T20:00:17.000Z"
+          },
+          {
+            "id": "CYyNVuFTMmEsR1hWitp0",
+            "direction": "inbound",
+            "body": "Perfecto, voy a presentar la cotización que me envió y en caso de alguna cosa le comento… le respondo el mismo correo?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T20:01:29.230Z"
+          },
+          {
+            "id": "Md0nIp2X97aVjEql7oRp",
+            "direction": "outbound",
+            "body": "si,  o por este medio",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T20:06:00.000Z"
+          },
+          {
+            "id": "tmlH69cgzoVuSNOVECxh",
+            "direction": "inbound",
+            "body": "Perfecto, muchas gracias",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2025-11-12T20:06:24.462Z"
+          }
+        ]
+      }
+    },
+    {
+      "opportunity": {
+        "id": "fLpuL7wRRfjFz7cq0i6a",
+        "name": "CONSTRUCCIONES MC VARGAS",
+        "contactId": "PLoOsmLMZiuKQTdhDJxr",
+        "contactName": "CONSTRUCCIONES MC VARGAS",
+        "monetaryValue": 1300571,
+        "pipelineId": "MNxYbS1kOg11IiU2QbMv",
+        "pipelineStageId": "2bfd0ea8-b816-4e1c-88de-4d25e2b535fb",
+        "pipelineStageName": "Perdido",
+        "status": "lost",
+        "createdAt": "2026-02-18T15:53:03.409Z"
+      },
+      "conversation": {
+        "id": "wzmGfnVj2REL6IgVTqlN",
+        "contactId": "PLoOsmLMZiuKQTdhDJxr",
+        "contactName": "CONSTRUCCIONES MC VARGAS",
+        "email": "jsanchez@maquinariasmcv.cl",
+        "phone": "+56934578899",
+        "lastMessageDate": 1771964175000,
+        "lastMessageType": "TYPE_WHATSAPP",
+        "lastMessageDirection": "outbound",
+        "lastMessageBody": "Hola, Soy *Sandra* de *Central GPS*, ¿cómo estás?",
+        "unreadCount": 0,
+        "messages": [
+          {
+            "id": "cgACM3bgvoEREpjQ7pJy",
+            "direction": "inbound",
+            "body": "Buen día",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T13:32:59.928Z"
+          },
+          {
+            "id": "b7oz1YnNoJ20Eye4xwsv",
+            "direction": "outbound",
+            "body": "¡Hola! 👋 Bienvenido a Central GPS. Hablas con Alicia, cuéntame cómo te puedo ayudar?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T13:33:10.000Z"
+          },
+          {
+            "id": "Wh8XZbVb0xmWieC1fTKK",
+            "direction": "inbound",
+            "body": "me podria ayudar con una cotización por favor",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T13:33:16.994Z"
+          },
+          {
+            "id": "IhtfuYN9SooYzD7xRf5x",
+            "direction": "outbound",
+            "body": "Perfecto, te ayudo con la cotización. ¿Cuántos vehículos necesitas monitorear, en qué comuna están y para qué necesitas el GPS?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T13:33:28.000Z"
+          },
+          {
+            "id": "WNjGQZsbxOKhBB9Bpljo",
+            "direction": "inbound",
+            "body": "ustedes tienen caramas dash cam?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T14:10:49.430Z"
+          },
+          {
+            "id": "KL0K7JIubNBWppGsJndE",
+            "direction": "outbound",
+            "body": "si tenemos diferentes opciones",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T14:31:30.000Z"
+          },
+          {
+            "id": "Nw0OLmjZe8BjzTIwqsOm",
+            "direction": "inbound",
+            "body": "jsanchez@maquinariasmcv.cl \n76.395.903-1",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T14:34:10.474Z"
+          },
+          {
+            "id": "zlhpQKzvB5oWYd5HUJHQ",
+            "direction": "inbound",
+            "body": "Necesito cotizar para 3 camiones y 1 camioneta camaras, con cableado directo (la idea es que se encienda el vehiculo y se encienda la camara), con vista para el exterior e interior, saber cual es la vision exterior, saber si mide la velocidad y si tiene gps incluido por favor",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T14:33:56.967Z"
+          },
+          {
+            "id": "dIkNlGI6ciYssBEDI87P",
+            "direction": "outbound",
+            "body": "te dejo el link para veas los planes \nhttps://www.centralgps.cl/planes-camaras-para-empresas/",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T14:45:26.000Z"
+          },
+          {
+            "id": "dJyeejZipq31PHiaiqwr",
+            "direction": "outbound",
+            "body": "cámara dual frente y cabina",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:01:27.000Z"
+          },
+          {
+            "id": "sJfi1H93vpajsLc3tqVn",
+            "direction": "inbound",
+            "body": "Muchas gracias!",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:05:50.447Z"
+          },
+          {
+            "id": "ckrTqtui5fa3D6BenvKe",
+            "direction": "outbound",
+            "body": "son con cableado directo y se enciende con el vehículo, dual graba frente y cabina, tiene gps incluido, tienes la opción de integrarla a la plataforma",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:08:40.000Z"
+          },
+          {
+            "id": "lJ3TLSu0plAqxWsWQkvh",
+            "direction": "inbound",
+            "body": "es posible que los planes y la información que me esta dando me la envie por correo?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:12:30.054Z"
+          },
+          {
+            "id": "UtCnzLFb2OOLoXQA88EN",
+            "direction": "outbound",
+            "body": "le envié cotización al correo",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:15:23.000Z"
+          },
+          {
+            "id": "7k6RrxxxlpQMcddKiM0A",
+            "direction": "outbound",
+            "body": "en que comuna necesitas instalar?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:17:49.000Z"
+          },
+          {
+            "id": "VDBKclVMkrYdFRSb6QY8",
+            "direction": "inbound",
+            "body": "pirque",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:18:06.256Z"
+          },
+          {
+            "id": "kMLcsBvzyYfsrvFI1BCT",
+            "direction": "inbound",
+            "body": "muchas gracias!",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:18:12.866Z"
+          },
+          {
+            "id": "dyOMqPYWvXWhGPUAAvuj",
+            "direction": "outbound",
+            "body": "Las instalaciones son sin costo en nuestro centro de atención en Av. Grecia Ñuñoa",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:20:59.000Z"
+          },
+          {
+            "id": "kqmhjaFXEwHXtLwMgs5o",
+            "direction": "inbound",
+            "body": "perfecto!",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:21:55.189Z"
+          },
+          {
+            "id": "eI8Jk7TmGqh6yvJ9ZVxg",
+            "direction": "inbound",
+            "body": "tienes algun video de referencia? y no tiene notificación o alarma en caso de que el conductor este hablando por telefono, señalar la velocidad, etc?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:24:11.275Z"
+          },
+          {
+            "id": "2EHIQaRYqXyJEnEVxoA9",
+            "direction": "outbound",
+            "body": "si tenemos \nesos planes son con IA deme unos minutos y le envío cotización",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:36:41.000Z"
+          },
+          {
+            "id": "qjb6Iz17a8gZis0Xx5EJ",
+            "direction": "inbound",
+            "body": "yaaa super!",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:45:14.482Z"
+          },
+          {
+            "id": "R1oOFsY7grrvlwYwi4la",
+            "direction": "inbound",
+            "body": "muchas gracias",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:45:18.511Z"
+          },
+          {
+            "id": "Ft7Zi46f9Ua32MGaeBqP",
+            "direction": "outbound",
+            "body": "aca puedes ver como funciona \nhttps://www.centralgps.cl/dashcam/",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:47:40.000Z"
+          },
+          {
+            "id": "O6bPV9ByFCAS0isCjWZe",
+            "direction": "inbound",
+            "body": "🤩",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-17T15:51:47.151Z"
+          },
+          {
+            "id": "5r1k1SFhI35CVbrzpYhC",
+            "direction": "outbound",
+            "body": "Buenas tardes pudiste ver como funcionan las cámaras?",
+            "messageType": "TYPE_SMS",
+            "dateAdded": "2026-02-24T19:52:27.000Z"
+          },
+          {
+            "id": "GzlQDRupT2H6o36iI6BH",
+            "direction": "outbound",
+            "body": "Hola, Soy *Sandra* de *Central GPS*, ¿cómo estás?",
+            "messageType": "TYPE_WHATSAPP",
+            "dateAdded": "2026-02-24T20:16:15.000Z"
+          }
+        ]
+      }
+    }
+  ],
+  "_meta": {
+    "totalOpportunities": 10,
+    "totalConversations": 10,
+    "source": "prod-ghl-mcp (Paperclip heartbeat CEN-998)"
+  }
+}

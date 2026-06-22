@@ -34,6 +34,8 @@ export interface OpenOpportunity {
   createdAt: string;
   updatedAt: string;
   contactId: string;
+  /** ID del usuario GHL asignado (vendedor responsable) — CEN-1000 */
+  assignedTo?: string;
   contact: {
     id: string;
     name: string;
@@ -76,6 +78,8 @@ export interface LiveOppAnalysis {
   value: number;
   stage: string;
   pipeline: string;
+  /** ID del usuario GHL asignado (vendedor responsable) — CEN-1000 */
+  assignedTo?: string;
 
   // Risk scoring
   overallRiskScore: number;    // 0-100, higher = more at risk
@@ -457,6 +461,7 @@ export function analyzeLiveOpportunity(
     value: opp.monetaryValue,
     stage: opp.pipelineStageName,
     pipeline: opp.pipelineName,
+    assignedTo: opp.assignedTo,
     overallRiskScore: cappedScore,
     riskLevel: riskLevelFromScore(cappedScore),
     alerts,

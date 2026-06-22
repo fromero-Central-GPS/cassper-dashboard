@@ -1,7 +1,8 @@
 'use client';
 
+import React, { useState } from 'react';
 import { RecoverableTicket, CampaignMetric } from '@/lib/ghl-types';
-import { Phone, Mail, MessageCircle, Camera, Hash, AlertTriangle, Zap, ArrowUp, MessageSquare, Send, CheckCircle, Clock, AtSign } from 'lucide-react';
+import { Phone, Mail, MessageCircle, Camera, Hash, AlertTriangle, Zap, ArrowUp, MessageSquare, Send, CheckCircle, Clock, ChevronDown, ChevronRight, ThumbsUp, XCircle, Loader2 } from 'lucide-react';
 
 interface RecoveryTicketsProps {
   tickets: RecoverableTicket[];
@@ -45,59 +46,178 @@ const campaignStatusConfig = {
   completed: { label: 'Finalizada', color: 'text-slate-400', bg: 'bg-slate-500/10', icon: CheckCircle },
 };
 
+const draftStatusConfig: Record<string, { label: string; color: string; bg: string; icon: React.ComponentType<{ className?: string }> }> = {
+  draft: { label: 'Pendiente', color: 'text-yellow-400', bg: 'bg-yellow-500/10', icon: Clock },
+  approved: { label: 'Aprobado', color: 'text-blue-400', bg: 'bg-blue-500/10', icon: ThumbsUp },
+  sent: { label: 'Enviado', color: 'text-green-400', bg: 'bg-green-500/10', icon: CheckCircle },
+  failed: { label: 'Fallido', color: 'text-red-400', bg: 'bg-red-500/10', icon: XCircle },
+};
+
 export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [approving, setApproving] = useState<Set<string>>(new Set());
+  const [ticketStatus, setTicketStatus] = useState<Record<string, string>>({});
+
+  const toggleExpand = (id: string) => {
+    const next = new Set(expanded);
+    if (next.has(id)) next.delete(id); else next.add(id);
+    setExpanded(next);
+  };
+
+  const handleApprove = async (ticket: RecoverableTicket) => {
+    if (!ticket.draftMessage || !ticket.email) return;
+
+    setApproving(prev => new Set(prev).add(ticket.id));
+
+    try {
+      const res = await fetch('/api/ghl/send-approval', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ticketId: ticket.id,
+          contactEmail: ticket.email,
+          subject: ticket.draftSubject || 'Seguimiento GPS — CentralGPS',
+          body: ticket.draftMessage,
+        }),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setTicketStatus(prev => ({ ...prev, [ticket.id]: 'sent' }));
+      } else {
+        setTicketStatus(prev => ({ ...prev, [ticket.id]: 'failed' }));
+      }
+    } catch {
+      setTicketStatus(prev => ({ ...prev, [ticket.id]: 'failed' }));
+    } finally {
+      setApproving(prev => {
+        const next = new Set(prev);
+        next.delete(ticket.id);
+        return next;
+      });
+    }
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-      {/* Ticket List - 3 cols */}
+      {/* Ticket List with Approval UI - 3 cols */}
       <div className="lg:col-span-3 bg-slate-800/50 border border-slate-700/50 rounded-xl p-5">
         <h3 className="text-white font-semibold mb-1">Tickets Recuperables</h3>
         <p className="text-slate-400 text-xs mb-4">
-          {tickets.length} tickets priorizados · {formatValue(tickets.reduce((sum, t) => sum + t.value, 0))} valor total
+          {tickets.length} tickets · {formatValue(tickets.reduce((sum, t) => sum + t.value, 0))} valor total · Expande para previsualizar y aprobar
         </p>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-slate-700/50">
-                <th className="text-left py-2 text-slate-400 font-medium text-xs">ID</th>
-                <th className="text-left py-2 text-slate-400 font-medium text-xs">Contacto</th>
-                <th className="text-left py-2 text-slate-400 font-medium text-xs">Canal</th>
-                <th className="text-right py-2 text-slate-400 font-medium text-xs">Valor</th>
-                <th className="text-left py-2 text-slate-400 font-medium text-xs">Razón</th>
-                <th className="text-center py-2 text-slate-400 font-medium text-xs">Prioridad</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tickets.map((ticket) => {
-                const ChannelIcon = channelIcons[ticket.channel];
-                const priority = priorityConfig[ticket.priority];
-                const PriorityIcon = priority.icon;
-                return (
-                  <tr key={ticket.id} className="border-b border-slate-700/30 hover:bg-slate-700/20 transition-colors">
-                    <td className="py-2.5 text-slate-500 text-xs">{ticket.id}</td>
-                    <td className="py-2.5">
-                      <p className="text-slate-200 text-xs">{ticket.contactName}</p>
-                      <p className="text-slate-500 text-[10px]">{ticket.stage} · Último: {ticket.lastContact}</p>
-                    </td>
-                    <td className="py-2.5">
-                      <ChannelIcon className={`w-4 h-4 ${channelColors[ticket.channel]}`} />
-                    </td>
-                    <td className="py-2.5 text-right text-slate-200 font-medium text-xs">
-                      {formatValue(ticket.value)}
-                    </td>
-                    <td className="py-2.5 text-slate-400 text-xs max-w-[140px] truncate">
-                      {ticket.lossReason}
-                    </td>
-                    <td className="py-2.5">
-                      <span className={`inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full border ${priority.color}`}>
-                        <PriorityIcon className="w-2.5 h-2.5" />
-                        {priority.label}
+        <div className="space-y-2">
+          {tickets.map((ticket) => {
+            const ChannelIcon = channelIcons[ticket.channel];
+            const priority = priorityConfig[ticket.priority];
+            const PriorityIcon = priority.icon;
+            const isOpen = expanded.has(ticket.id);
+            const isApproving = approving.has(ticket.id);
+            const status = ticketStatus[ticket.id] || ticket.draftStatus || 'draft';
+            const hasDraft = !!ticket.draftMessage;
+            const statusInfo = draftStatusConfig[status];
+
+            return (
+              <div
+                key={ticket.id}
+                className="bg-slate-900/50 rounded-lg border border-slate-700/30 overflow-hidden"
+              >
+                {/* Row header */}
+                <button
+                  onClick={() => hasDraft && toggleExpand(ticket.id)}
+                  className={`w-full flex items-center gap-3 p-3 text-left ${hasDraft ? 'hover:bg-slate-800/30 cursor-pointer' : 'cursor-default'} transition-colors`}
+                >
+                  {hasDraft ? (
+                    isOpen ? <ChevronDown className="w-4 h-4 text-slate-500 shrink-0" /> : <ChevronRight className="w-4 h-4 text-slate-500 shrink-0" />
+                  ) : <span className="w-4 shrink-0" />}
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-slate-200 text-xs font-medium truncate">{ticket.contactName}</span>
+                      <ChannelIcon className={`w-3 h-3 ${channelColors[ticket.channel]} shrink-0`} />
+                    </div>
+                    <p className="text-slate-500 text-[10px]">{ticket.stage} · {ticket.lastContact} · {ticket.lossReason}</p>
+                  </div>
+
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className="text-slate-200 text-xs font-semibold">{formatValue(ticket.value)}</span>
+                    <span className={`inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full border ${priority.color}`}>
+                      <PriorityIcon className="w-2.5 h-2.5" />
+                      {priority.label}
+                    </span>
+                    {hasDraft && (
+                      <span className={`inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full ${statusInfo.bg} ${statusInfo.color}`}>
+                        {React.createElement(statusInfo.icon, { className: 'w-2.5 h-2.5' })}
+                        {statusInfo.label}
                       </span>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                    )}
+                  </div>
+                </button>
+
+                {/* Expanded draft + approval */}
+                {isOpen && hasDraft && (
+                  <div className="border-t border-slate-700/30 px-3 pb-3 pt-3">
+                    {/* Channel indicator */}
+                    <div className="flex items-center gap-2 mb-2">
+                      <ChannelIcon className={`w-4 h-4 ${channelColors[ticket.channel]}`} />
+                      <span className="text-xs text-slate-400">
+                        {ticket.channel} → {ticket.email || ticket.phone || 'sin datos'}
+                      </span>
+                    </div>
+
+                    {/* Subject */}
+                    <div className="mb-2">
+                      <span className="text-[10px] text-slate-500 uppercase tracking-wider">Asunto</span>
+                      <p className="text-xs text-slate-300 bg-slate-800/50 rounded p-1.5 mt-0.5">{ticket.draftSubject}</p>
+                    </div>
+
+                    {/* Message body */}
+                    <div className="mb-3">
+                      <span className="text-[10px] text-slate-500 uppercase tracking-wider">Mensaje</span>
+                      <div className="text-xs text-slate-300 bg-slate-800/50 rounded p-2 mt-0.5 whitespace-pre-wrap max-h-48 overflow-y-auto">
+                        {ticket.draftMessage}
+                      </div>
+                    </div>
+
+                    {/* Approval button */}
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] text-slate-500">
+                        {status === 'sent' ? '✅ Enviado' : status === 'failed' ? '❌ Error al enviar' : '⚠️ Requiere aprobación humana'}
+                      </span>
+                      {status === 'draft' && (
+                        <button
+                          onClick={() => handleApprove(ticket)}
+                          disabled={isApproving}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 disabled:bg-indigo-500/50 text-white text-xs font-medium rounded-lg transition-colors"
+                        >
+                          {isApproving ? (
+                            <Loader2 className="w-3 h-3 animate-spin" />
+                          ) : (
+                            <ThumbsUp className="w-3 h-3" />
+                          )}
+                          {isApproving ? 'Enviando...' : 'Aprobar envío'}
+                        </button>
+                      )}
+                      {status === 'sent' && (
+                        <span className="inline-flex items-center gap-1 text-xs text-green-400">
+                          <CheckCircle className="w-3 h-3" /> Enviado
+                        </span>
+                      )}
+                      {status === 'failed' && (
+                        <button
+                          onClick={() => handleApprove(ticket)}
+                          disabled={isApproving}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white text-xs font-medium rounded-lg transition-colors"
+                        >
+                          Reintentar
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
 

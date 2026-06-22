@@ -88,6 +88,11 @@ export interface RecoverableTicket {
   stage: string;
   score: number;
   lastContact: string;
+  email?: string;
+  phone?: string;
+  draftSubject?: string;
+  draftMessage?: string;
+  draftStatus?: 'draft' | 'approved' | 'sent' | 'failed';
 }
 
 export interface CampaignMetric {

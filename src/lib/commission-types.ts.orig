@@ -271,35 +271,7 @@ export interface CommissionEvent {
   deviceImei?: string;
   description: string;
   metadata?: Record<string, unknown>;
-  read?: boolean;
   createdAt: string;
-}
-
-// ─── Alertas de Comisiones ──────────────────────────────────────────────────
-
-export type AlertType =
-  | 'A1_NUEVO_DISPOSITIVO_UPSELL'
-  | 'A2_BAJA_DISPOSITIVO_FACTURADO'
-  | 'A3_CLIENTE_NUEVO_SIN_VENDEDOR'
-  | 'A4_DISCREPANCIA_DISPOSITIVOS'
-  | 'A5_FACTURA_IMPAGA'
-  | 'A6_CONTRATO_CANCELADO'
-  | 'A7_PAGO_LIBERADO'
-  | 'A8_PAGO_RETENIDO'
-  | 'LIVE_OPP_RISK';
-
-export interface CommissionAlert {
-  id: string;
-  type: AlertType;
-  title: string;
-  description: string;
-  severity: 'low' | 'medium' | 'high' | 'critical';
-  contractId?: string;
-  sellerId?: string;
-  clientId?: string;
-  metadata?: Record<string, unknown>;
-  createdAt: string;
-  read: boolean;
 }
 
 // ─── Configuración del Sistema ─────────────────────────────────────────────
