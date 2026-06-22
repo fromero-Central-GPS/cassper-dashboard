@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { RecoverableTicket, CampaignMetric } from '@/lib/ghl-types';
-import { Phone, Mail, MessageCircle, Camera, Hash, AlertTriangle, Zap, ArrowUp, MessageSquare, Send, CheckCircle, Clock, ChevronDown, ChevronRight, ThumbsUp, XCircle, Loader2 } from 'lucide-react';
+import { Phone, Mail, MessageCircle, Camera, Hash, AlertTriangle, Zap, ArrowUp, MessageSquare, Send, CheckCircle, Clock, ChevronDown, ChevronRight, ThumbsUp, XCircle, Loader2, TrendingUp, Ban, Eye } from 'lucide-react';
 
 interface RecoveryTicketsProps {
   tickets: RecoverableTicket[];
@@ -49,7 +49,11 @@ const campaignStatusConfig = {
 const draftStatusConfig: Record<string, { label: string; color: string; bg: string; icon: React.ComponentType<{ className?: string }> }> = {
   draft: { label: 'Pendiente', color: 'text-yellow-400', bg: 'bg-yellow-500/10', icon: Clock },
   approved: { label: 'Aprobado', color: 'text-blue-400', bg: 'bg-blue-500/10', icon: ThumbsUp },
-  sent: { label: 'Enviado', color: 'text-green-400', bg: 'bg-green-500/10', icon: CheckCircle },
+  sent: { label: 'Enviado', color: 'text-indigo-400', bg: 'bg-indigo-500/10', icon: Send },
+  awaiting_response: { label: 'Esperando respuesta', color: 'text-blue-400', bg: 'bg-blue-500/10', icon: Eye },
+  replied: { label: 'Respondió', color: 'text-amber-400', bg: 'bg-amber-500/10', icon: TrendingUp },
+  recovered: { label: 'Recuperado', color: 'text-green-400', bg: 'bg-green-500/10', icon: CheckCircle },
+  no_response: { label: 'Sin respuesta', color: 'text-slate-400', bg: 'bg-slate-500/10', icon: Ban },
   failed: { label: 'Fallido', color: 'text-red-400', bg: 'bg-red-500/10', icon: XCircle },
 };
 
@@ -83,7 +87,7 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
       const data = await res.json();
 
       if (data.success) {
-        setTicketStatus(prev => ({ ...prev, [ticket.id]: 'sent' }));
+        setTicketStatus(prev => ({ ...prev, [ticket.id]: 'awaiting_response' }));
       } else {
         setTicketStatus(prev => ({ ...prev, [ticket.id]: 'failed' }));
       }
@@ -182,7 +186,12 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
                     {/* Approval button */}
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] text-slate-500">
-                        {status === 'sent' ? '✅ Enviado' : status === 'failed' ? '❌ Error al enviar' : '⚠️ Requiere aprobación humana'}
+                        {status === 'awaiting_response' ? '📨 Esperando respuesta del contacto'
+                          : status === 'replied' ? '💬 El contacto respondió'
+                          : status === 'recovered' ? '🎯 ¡Oportunidad recuperada!'
+                          : status === 'no_response' ? '📪 Sin respuesta (archivado)'
+                          : status === 'failed' ? '❌ Error al enviar'
+                          : '⚠️ Requiere aprobación humana'}
                       </span>
                       {status === 'draft' && (
                         <button
@@ -198,9 +207,25 @@ export function RecoveryTickets({ tickets, campaigns }: RecoveryTicketsProps) {
                           {isApproving ? 'Enviando...' : 'Aprobar envío'}
                         </button>
                       )}
-                      {status === 'sent' && (
+                      {(status === 'awaiting_response' || status === 'sent') && (
+                        <div className="text-[10px] text-slate-500">
+                          <Eye className="w-3 h-3 inline mr-1" />
+                          Monitoreando respuesta
+                        </div>
+                      )}
+                      {status === 'replied' && (
+                        <span className="inline-flex items-center gap-1 text-xs text-amber-400">
+                          <TrendingUp className="w-3 h-3" /> En seguimiento
+                        </span>
+                      )}
+                      {status === 'recovered' && (
                         <span className="inline-flex items-center gap-1 text-xs text-green-400">
-                          <CheckCircle className="w-3 h-3" /> Enviado
+                          <CheckCircle className="w-3 h-3" /> Recuperado
+                        </span>
+                      )}
+                      {status === 'no_response' && (
+                        <span className="inline-flex items-center gap-1 text-xs text-slate-500">
+                          <Ban className="w-3 h-3" /> Archivado
                         </span>
                       )}
                       {status === 'failed' && (
