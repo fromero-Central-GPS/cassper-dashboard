@@ -12,6 +12,8 @@ import type { DashboardData, ForensicsApiResponse } from '@/lib/ghl-types';
 import type { BatchAnalysisResult } from '@/lib/analysis-engine';
 import { BarChart3, RefreshCw, Zap, Activity, Trophy, Fingerprint } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [forensics, setForensics] = useState<BatchAnalysisResult | null>(null);
